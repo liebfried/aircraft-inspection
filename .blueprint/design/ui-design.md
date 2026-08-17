@@ -1,6 +1,6 @@
 # Aircraft Inspection — UI-Design
 
-Status: **Zur Abnahme vorgelegt.**
+Status: **Abgenommen.**
 Mockups: [`mockups/mockups.html`](mockups/mockups.html) — selbstständig im Browser zu öffnen.
 Grundlage: freigegebene Requirements-Baseline (`requirements.md`, 2026-08-17).
 
@@ -78,3 +78,5 @@ Autosave-Anzeige, „WLAN aus"-Statusleiste und Foto-Feld-Verhalten sichtbar.
 | UD-03 | Formular-Designer ergänzt | Visueller Baukasten S-09/S-10/S-11 gemäß Nachtrag N-01 Rev. 2 |
 | UD-04 | Ausfüllmodus | WYSIWYG-Formularansicht (REQ-074) — 2026-08-17 |
 | UD-05 | Leinwand-/Seitenformat | A4 hochkant, PDF-deckungsgleich — 2026-08-17 |
+
+Approved-by-user: 2026-08-17

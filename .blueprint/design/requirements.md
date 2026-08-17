@@ -144,7 +144,7 @@ Approved-by-user: 2026-08-17
 
 ## Nachtrag N-01 — Visueller Formular-Designer (2026-08-17, Rev. 2)
 
-Status: **Zur Freigabe vorgelegt.**
+Status: **Freigegeben.**
 Anlass: Rückmeldung aus dem Phase-2-Review — Formulare sollen direkt in der App
 erstellt werden, und zwar als **visueller Baukasten mit frei positionierbaren
 Elementen auf einer Leinwand mit Andock-Raster** (Rev. 2 ersetzt die
@@ -211,3 +211,5 @@ Validierungs-, Foto-, Unterschrift-, Abschluss- und Export-Anforderungen
 | N-01c | Priorität: direkt nach Formular-Import (siehe Priorisierung) |
 | N-01d | Ausfüllen als WYSIWYG-Formularansicht → REQ-074 |
 | N-01e | Leinwand-/Seitenformat A4 hochkant → REQ-007 |
+
+Approved-by-user: 2026-08-17 (Nachtrag N-01 Rev. 2)
