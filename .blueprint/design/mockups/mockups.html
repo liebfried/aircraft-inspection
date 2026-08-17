@@ -130,6 +130,49 @@
     border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
   .qbox b { color: var(--accent); }
   ul.notes { color: var(--page-muted); font-size: 14.5px; max-width: 76ch; }
+
+  /* ---------- A4-Leinwand (Designer & Formularansicht) ---------- */
+  .a4wrap { flex: 1; display: flex; justify-content: center; align-items: flex-start; padding: 18px 10px 24px; background: #E7E9EE; position: relative; }
+  .a4 { width: 430px; aspect-ratio: 210/297; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.14); position: relative; color: #26282B; overflow: hidden; }
+  .a4.gridded { background-image: radial-gradient(circle, #D6DCE5 1px, transparent 1.1px); background-size: 16px 16px; background-position: 8px 8px; }
+  .el { position: absolute; border-radius: 2px; }
+  .el .elab { font-size: 7.5px; color: #6E6E73; display: block; line-height: 1.3; }
+  .el .eval { font-size: 10.5px; line-height: 1.35; }
+  .inputbox { border: 1.2px solid #B9C2CE; background: #FAFBFD; padding: 3px 6px; }
+  .inputbox.missing { border-color: var(--bad); background: #FDF3F1; }
+  .miss-tag { position: absolute; right: -2px; top: -14px; font-size: 7.5px; font-weight: 700; color: #fff; background: var(--bad); border-radius: 3px; padding: 1.5px 5px; }
+  .el.sel { outline: 2px solid var(--tint); outline-offset: 1px; }
+  .handle { position: absolute; width: 8px; height: 8px; background: #fff; border: 1.6px solid var(--tint); border-radius: 50%; z-index: 3; }
+  .guide { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1.4px dashed #D0397F; z-index: 2; }
+  .a4 .hdrzone { position: absolute; left: 0; right: 0; top: 0; height: 11%; border-bottom: 1px solid #E2E5EA; background: #F8FAFC; }
+  .a4 .ftrzone { position: absolute; left: 0; right: 0; bottom: 0; height: 6%; border-top: 1px solid #E2E5EA; background: #F8FAFC;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font-size: 7.5px; color: #6E6E73; }
+  .logo-ph { border: 1px dashed #B9C2CE; color: #9AA3AF; font-size: 7px; display: flex; align-items: center; justify-content: center; }
+  .mini-seg { display: inline-flex; border: 1px solid #C9CFD8; border-radius: 4px; overflow: hidden; font-size: 7px; font-weight: 700; }
+  .mini-seg span { padding: 2px 5px; background: #fff; color: #6E6E73; }
+  .mini-seg .ok { background: var(--ok); color: #fff; } .mini-seg .bad { background: var(--bad); color: #fff; }
+  .mini-thumb { width: 44px; height: 33px; border-radius: 3px; background: linear-gradient(135deg,#C7D3E2,#8FA5C0); display: inline-block; }
+  .mini-thumb.add { background: #EFF1F5; border: 1.2px dashed #B9C2CE; color: var(--tint); text-align: center; line-height: 33px; font-size: 14px; }
+  .zoombar { position: absolute; right: 12px; bottom: 12px; display: flex; gap: 6px; z-index: 4; }
+  .zoombar span { background: rgba(255,255,255,.95); border: 1px solid var(--app-line); border-radius: 8px; width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--tint); box-shadow: 0 2px 6px rgba(0,0,0,.10); }
+  .pagethumbs { display: flex; flex-direction: column; gap: 10px; align-items: center; padding-top: 6px; }
+  .pagethumb { width: 62px; aspect-ratio: 210/297; background: #fff; border: 1.5px solid var(--app-line); border-radius: 4px; position: relative; }
+  .pagethumb.on { border-color: var(--tint); box-shadow: 0 0 0 2.5px #DCE7F7; }
+  .pt-num { position: absolute; left: 4px; bottom: 3px; font-size: 9px; color: var(--app-muted); }
+  .pt-state { position: absolute; right: 4px; top: 3px; font-size: 9px; }
+  .designbar { display: flex; gap: 8px; align-items: center; background: #fff; border-bottom: 1px solid var(--app-line); padding: 8px 14px; font-size: 12.5px; }
+  .togglechip { display: inline-flex; gap: 5px; align-items: center; border: 1px solid var(--app-line); border-radius: 8px; padding: 5px 10px; font-weight: 600; color: var(--app-muted); }
+  .togglechip.on { color: var(--tint); border-color: #BCD0EA; background: #EFF5FC; }
+  .coords { margin-left: auto; font-size: 11.5px; color: var(--app-muted); font-variant-numeric: tabular-nums; }
+  .pal { padding: 10px; }
+  .pal .sb-h { margin: 8px 4px 5px; }
+  .pal-item { display: block; background: #fff; border: 1px solid var(--app-line); border-radius: 8px; padding: 6px 10px;
+    font-size: 12px; font-weight: 600; color: var(--app-ink); margin-bottom: 6px; }
+  .pal-item small { display: block; font-weight: 400; color: var(--app-muted); font-size: 10.5px; }
+  .block-card { border: 1px solid var(--app-line); border-radius: 10px; overflow: hidden; }
+  .block-card .bc-prev { background: #F4F6F9; padding: 10px; min-height: 64px; }
+  .block-card .bc-foot { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-top: 1px solid var(--app-line); font-size: 12.5px; font-weight: 600; }
 </style>
 
 <div class="wrap">
@@ -145,7 +188,7 @@
     <h2>Navigationsfluss</h2>
     <div class="flow">
       <span class="node">Vorlagen &amp; Entwürfe (S-01)</span><span class="arr">→</span>
-      <span class="node">Formular-Editor (S-02)</span><span class="arr">→</span>
+      <span class="node">Formularansicht (S-02)</span><span class="arr">→</span>
       <span class="node">PDF-Vorschau (S-06)</span><span class="arr">→</span>
       <span class="node">Export / Abschluss (S-07)</span>
     </div>
@@ -159,7 +202,8 @@
     </div>
     <div class="flow">
       <span class="node">Formular-Designer (S-09)</span><span class="arr">→</span>
-      <span class="node sub">Feld-Einstellungen (S-10)</span>
+      <span class="node sub">Element-Eigenschaften (S-10)</span>
+      <span class="node sub">Standard-Bausteine (S-11)</span>
       <span class="arr">— aus S-01, „Neues Formular" oder „Bearbeiten" einer Vorlage</span>
     </div>
   </section>
@@ -214,15 +258,16 @@
 
   <!-- ================= S-02 ================= -->
   <section>
-    <h2>S-02 · Formular-Editor</h2>
+    <h2>S-02 · Formularansicht (Ausfüllen)</h2>
     <div class="screen-meta">
-      <span class="req">REQ-001</span><span class="req">REQ-002</span><span class="req">REQ-011</span>
-      <span class="req">REQ-020</span><span class="req">REQ-024</span><span class="req">REQ-030</span>
+      <span class="req">REQ-001</span><span class="req">REQ-011</span><span class="req">REQ-020</span>
+      <span class="req">REQ-024</span><span class="req">REQ-030</span><span class="req">REQ-074</span>
     </div>
-    <p class="rationale">Das Herzstück: links die Formularseiten mit Validierungsstand je Seite,
-    rechts die Felder als Karten. Pflichtfelder tragen ein ★; fehlende werden rot umrandet und
-    beschriftet — nie nur Farbe (Barrierefreiheit). Autosave wird dezent bestätigt, es gibt
-    keinen Speichern-Knopf.</p>
+    <p class="rationale">Ausgefüllt wird direkt auf der gestalteten A4-Seite — was der Prüfer
+    sieht, ist exakt das spätere PDF (WYSIWYG, REQ-074). Antippen eines Felds öffnet Tastatur,
+    Datumsrad oder das passende Sheet (Foto, Unterschrift). Links die Seiten als Miniaturen mit
+    Validierungsstand; fehlende Pflichtfelder sind rot umrandet und beschriftet — nie nur Farbe.
+    Zoomen per Pinch oder Tasten; Autosave läuft ohne Speichern-Knopf.</p>
     <div class="ipad"><div class="screen">
       <div class="statusbar"><span>9:41</span><span></span><span>100 %</span></div>
       <div class="navbar">
@@ -230,34 +275,50 @@
         <span class="title">D-EFGH · Wartung 200 h</span>
         <span class="nav-r"><span class="pill prog">2 Pflichtfelder offen</span></span>
       </div>
-      <div class="split" style="min-height:520px;">
-        <div class="sidebar">
-          <div class="sb-h">Seiten</div>
-          <div class="sb-row active"><span>1 · Allgemeine Angaben</span><span class="cnt">⚠ 1</span></div>
-          <div class="sb-row"><span>2 · Sichtprüfung</span><span class="cnt">✓</span></div>
-          <div class="sb-row"><span>3 · Befunde &amp; Fotos</span><span class="cnt">⚠ 1</span></div>
-          <div class="sb-row"><span>4 · Abschluss</span><span class="cnt">–</span></div>
-        </div>
-        <div class="content"><div class="fieldlist">
-          <div class="field"><div class="h-field">Allgemeine Angaben</div></div>
-          <div class="field"><div class="lab">Luftfahrzeug-Kennzeichen <span class="req-star">★</span></div>
-            <div class="val">D-EFGH</div></div>
-          <div class="field missing"><div class="lab">Prüfer (Name) <span class="req-star">★</span></div>
-            <div class="val" style="color:#9A9AA1;">Noch nicht ausgefüllt</div>
-            <div class="err">Pflichtfeld — bitte ausfüllen</div></div>
-          <div class="field"><div class="lab">Datum der Prüfung <span class="req-star">★</span></div>
-            <div class="val">17.08.2026 ▾</div></div>
-          <div class="field"><div class="lab">Checkliste · Rumpf außen</div>
-            <div class="check"><span>Beplankung ohne Beschädigung</span><span class="seg"><span class="on-ok">OK</span><span>Mangel</span><span>N. z.</span></span></div>
-            <div class="check"><span>Kennzeichen lesbar</span><span class="seg"><span class="on-ok">OK</span><span>Mangel</span><span>N. z.</span></span></div>
-            <div class="check"><span>Antennen fest</span><span class="seg"><span>OK</span><span class="on-bad">Mangel</span><span>N. z.</span></span></div>
-          </div>
-          <div class="field"><div class="lab">Fotos · Befundstellen</div>
-            <div class="thumbs"><span class="thumb"></span><span class="thumb annotated"></span><span class="thumb add">＋</span></div>
-            <div class="cnt-note">2 von max. 10 Fotos · Kamera oder Fotobibliothek</div></div>
-          <div class="field"><div class="lab">Bemerkungen</div>
-            <div class="val">Kleiner Lackschaden an der linken Tragfläche, siehe Foto 2. Antenne 3 nachziehen.</div></div>
+      <div class="split" style="min-height:560px;grid-template-columns:96px 1fr;">
+        <div class="sidebar"><div class="pagethumbs">
+          <div class="pagethumb on"><span class="pt-state" style="color:var(--warn);">⚠</span><span class="pt-num">1</span></div>
+          <div class="pagethumb"><span class="pt-state" style="color:var(--ok);">✓</span><span class="pt-num">2</span></div>
+          <div class="pagethumb"><span class="pt-state" style="color:var(--warn);">⚠</span><span class="pt-num">3</span></div>
         </div></div>
+        <div class="a4wrap">
+          <div class="a4">
+            <div class="hdrzone">
+              <div style="position:absolute;left:3.5%;top:9px;font-size:12px;font-weight:800;">Wartungskontrolle 200 h</div>
+              <div style="position:absolute;left:3.5%;bottom:6px;font-size:7.5px;color:#6E6E73;">Sichtprüfung Zelle · Version v2</div>
+              <div class="logo-ph" style="position:absolute;right:3.5%;top:9px;width:64px;height:30px;">LOGO</div>
+            </div>
+            <div class="el inputbox" style="left:3.5%;top:14%;width:44%;height:7%;">
+              <span class="elab">Luftfahrzeug-Kennzeichen ★</span><span class="eval">D-EFGH</span></div>
+            <div class="el inputbox" style="left:52.5%;top:14%;width:44%;height:7%;">
+              <span class="elab">Datum der Prüfung ★</span><span class="eval">17.08.2026</span></div>
+            <div class="el inputbox missing" style="left:3.5%;top:23.5%;width:93%;height:7%;">
+              <span class="miss-tag">Pflichtfeld — bitte ausfüllen</span>
+              <span class="elab">Prüfer (Name) ★</span><span class="eval" style="color:#9AA3AF;">&nbsp;</span></div>
+            <div class="el" style="left:3.5%;top:33.5%;width:93%;">
+              <span class="elab" style="font-size:8.5px;font-weight:700;color:#26282B;">Checkliste · Rumpf außen</span>
+              <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #EDEFF3;padding:3px 0;">
+                <span class="eval" style="font-size:9px;">Beplankung ohne Beschädigung</span>
+                <span class="mini-seg"><span class="ok">OK</span><span>Mangel</span><span>N. z.</span></span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #EDEFF3;padding:3px 0;">
+                <span class="eval" style="font-size:9px;">Kennzeichen lesbar</span>
+                <span class="mini-seg"><span class="ok">OK</span><span>Mangel</span><span>N. z.</span></span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;">
+                <span class="eval" style="font-size:9px;">Antennen fest</span>
+                <span class="mini-seg"><span>OK</span><span class="bad">Mangel</span><span>N. z.</span></span></div>
+            </div>
+            <div class="el" style="left:3.5%;top:56%;width:93%;">
+              <span class="elab" style="font-size:8.5px;font-weight:700;color:#26282B;">Fotos · Befundstellen (2/10)</span>
+              <div style="display:flex;gap:6px;margin-top:3px;">
+                <span class="mini-thumb"></span><span class="mini-thumb" style="position:relative;"><span style="position:absolute;inset:5px 9px;border:2px solid var(--bad);border-radius:50%;"></span></span><span class="mini-thumb add">＋</span></div>
+            </div>
+            <div class="el inputbox" style="left:3.5%;top:72%;width:93%;height:14%;">
+              <span class="elab">Bemerkungen</span>
+              <span class="eval" style="font-size:9px;">Kleiner Lackschaden an der linken Tragfläche, siehe Foto 2. Antenne 3 nachziehen.</span></div>
+            <div class="ftrzone"><span>D-EFGH · 17.08.2026</span><span>Seite 1 von 3</span></div>
+          </div>
+          <div class="zoombar"><span>−</span><span>＋</span></div>
+        </div>
       </div>
       <div class="toolbar">
         <span class="btn plain">Validierung prüfen</span>
@@ -433,13 +494,15 @@
 
   <!-- ================= S-09 ================= -->
   <section>
-    <h2>S-09 · Formular-Designer</h2>
-    <div class="screen-meta"><span class="req">REQ-007</span><span class="req">REQ-008</span><span class="req">REQ-009</span></div>
-    <p class="rationale">Vorlagen entstehen und ändern sich direkt in der App: links die Seiten der
-    Vorlage, rechts die Felder mit Drag-Griffen (≡) zum Umsortieren. Neue Felder kommen über die
-    Typ-Palette unten hinzu; Antippen eines Felds öffnet die Feld-Einstellungen (S-10). Änderungen
-    an einer Vorlage mit bestehenden Entwürfen werden erst mit „Version veröffentlichen" wirksam —
-    als neue Version, bestehende Entwürfe bleiben unberührt.</p>
+    <h2>S-09 · Formular-Designer (Baukasten &amp; Leinwand)</h2>
+    <div class="screen-meta"><span class="req">REQ-007</span><span class="req">REQ-070</span>
+      <span class="req">REQ-071</span><span class="req">REQ-008</span><span class="req">REQ-009</span></div>
+    <p class="rationale">Links der <b>Baukasten</b>: Struktur-, Statik- und Eingabe-Elemente werden
+    per Drag &amp; Drop auf die leere A4-Leinwand gezogen. Das zuschaltbare <b>4-mm-Raster</b> und
+    magentafarbene <b>Ausrichtungslinien</b> lassen Elemente an Rasterpunkten und an Kanten anderer
+    Elemente andocken — gleiche Positionen sind damit garantiert. Das ausgewählte Element (blau,
+    mit Griffen) zeigt seine Maße numerisch in der Werkzeugleiste; „Ausrichten" bündelt
+    Mehrfachauswahlen. Veröffentlicht wird als neue Version (v3), bestehende Entwürfe bleiben auf v2.</p>
     <div class="ipad"><div class="screen">
       <div class="statusbar"><span>9:41</span><span></span><span>100 %</span></div>
       <div class="navbar">
@@ -447,40 +510,67 @@
         <span class="title">Designer · Sichtprüfung Zelle</span>
         <span class="nav-r"><span class="pill prog">v3 in Bearbeitung</span></span>
       </div>
-      <div style="padding:12px 22px 0;"><div class="banner warn">✎ Unveröffentlichte Änderungen — beim Veröffentlichen entsteht v3. Bestehende Entwürfe bleiben auf v2.</div></div>
-      <div class="split" style="min-height:440px;">
-        <div class="sidebar">
-          <div class="sb-h">Seiten</div>
-          <div class="sb-row active"><span>1 · Allgemeine Angaben</span><span class="cnt">≡</span></div>
-          <div class="sb-row"><span>2 · Sichtprüfung</span><span class="cnt">≡</span></div>
-          <div class="sb-row"><span>3 · Befunde &amp; Fotos</span><span class="cnt">≡</span></div>
-          <div class="sb-row"><span class="link">＋ Seite hinzufügen</span></div>
-        </div>
-        <div class="content"><div class="fieldlist">
-          <div class="field"><div class="lab"><span style="color:#B4B4BB;">≡</span> Überschrift</div>
-            <div class="val" style="font-weight:700;">Allgemeine Angaben</div></div>
-          <div class="field"><div class="lab"><span style="color:#B4B4BB;">≡</span> Einzeiliger Text · <span class="req-star">★ Pflicht</span></div>
-            <div class="val">Luftfahrzeug-Kennzeichen</div></div>
-          <div class="field"><div class="lab"><span style="color:#B4B4BB;">≡</span> Datum · <span class="req-star">★ Pflicht</span></div>
-            <div class="val">Datum der Prüfung</div></div>
-          <div class="field"><div class="lab"><span style="color:#B4B4BB;">≡</span> Checkliste · 3 Einträge</div>
-            <div class="val">Rumpf außen</div></div>
-          <div class="field"><div class="lab"><span style="color:#B4B4BB;">≡</span> Foto · max. 10</div>
-            <div class="val">Befundstellen</div></div>
-          <div class="field" style="border-style:dashed;background:#F7F8FB;">
-            <div class="lab">＋ Feld hinzufügen</div>
-            <div class="thumbs" style="margin-top:8px;">
-              <span class="btn plain" style="font-size:12px;">Überschrift</span>
-              <span class="btn plain" style="font-size:12px;">Text</span>
-              <span class="btn plain" style="font-size:12px;">Mehrzeilig</span>
-              <span class="btn plain" style="font-size:12px;">Datum</span>
-              <span class="btn plain" style="font-size:12px;">Checkliste</span>
-              <span class="btn plain" style="font-size:12px;">Foto</span>
-              <span class="btn plain" style="font-size:12px;">Unterschrift</span>
-            </div></div>
-        </div></div>
+      <div class="designbar">
+        <span class="togglechip on">▦ Raster</span>
+        <span class="togglechip on">⌖ Einrasten</span>
+        <span class="togglechip">↺ Rückgängig</span>
+        <span class="togglechip">≡ Ausrichten ▾</span>
+        <span class="togglechip">▤ Standard-Bausteine…</span>
+        <span class="coords">Auswahl: x 8 mm · y 96 mm · B 194 mm · H 34 mm</span>
       </div>
+      <div class="split" style="min-height:600px;grid-template-columns:196px 1fr;">
+        <div class="sidebar pal">
+          <div class="sb-h">Struktur</div>
+          <span class="pal-item">Kopfzeile <small>auf jeder Seite</small></span>
+          <span class="pal-item">Fußzeile <small>auf jeder Seite</small></span>
+          <div class="sb-h">Statisch</div>
+          <span class="pal-item">Überschrift / Text</span>
+          <span class="pal-item">Linie / Unterstreichung</span>
+          <span class="pal-item">Rahmen / Box</span>
+          <span class="pal-item">Liste (Aufzählung)</span>
+          <span class="pal-item">Bild / Logo</span>
+          <div class="sb-h">Eingabe</div>
+          <span class="pal-item">Textfeld</span>
+          <span class="pal-item">Textbereich</span>
+          <span class="pal-item">Datum</span>
+          <span class="pal-item">Checkbox</span>
+          <span class="pal-item">Checklisten-Gruppe</span>
+          <span class="pal-item">Auswahlliste</span>
+          <span class="pal-item">Foto</span>
+          <span class="pal-item">Unterschrift</span>
+        </div>
+        <div class="a4wrap">
+          <div class="a4 gridded">
+            <div class="guide" style="left:3.5%;"></div>
+            <div class="hdrzone">
+              <div style="position:absolute;left:3.5%;top:9px;font-size:12px;font-weight:800;">Wartungskontrolle 200 h</div>
+              <div class="logo-ph" style="position:absolute;right:3.5%;top:9px;width:64px;height:30px;">LOGO</div>
+            </div>
+            <div class="el inputbox" style="left:3.5%;top:14%;width:44%;height:7%;">
+              <span class="elab">Luftfahrzeug-Kennzeichen ★</span><span class="eval" style="color:#9AA3AF;">Textfeld</span></div>
+            <div class="el inputbox" style="left:52.5%;top:14%;width:44%;height:7%;">
+              <span class="elab">Datum der Prüfung ★</span><span class="eval" style="color:#9AA3AF;">Datum</span></div>
+            <div class="el inputbox" style="left:3.5%;top:23.5%;width:93%;height:7%;">
+              <span class="elab">Prüfer (Name) ★</span><span class="eval" style="color:#9AA3AF;">Textfeld</span></div>
+            <div class="el sel" style="left:3.5%;top:33.5%;width:93%;height:19%;background:#FAFBFD;border:1.2px solid #B9C2CE;padding:3px 6px;">
+              <span class="handle" style="left:-5px;top:-5px;"></span><span class="handle" style="right:-5px;top:-5px;"></span>
+              <span class="handle" style="left:-5px;bottom:-5px;"></span><span class="handle" style="right:-5px;bottom:-5px;"></span>
+              <span class="elab" style="font-weight:700;color:#26282B;">Checklisten-Gruppe · Rumpf außen · 3 Einträge</span>
+              <span class="eval" style="font-size:8.5px;color:#6E6E73;">Beplankung ohne Beschädigung · Kennzeichen lesbar · Antennen fest — je OK / Mangel / N. z.</span></div>
+            <div class="el inputbox" style="left:3.5%;top:56%;width:44%;height:12%;">
+              <span class="elab">Fotos · Befundstellen (max. 10)</span><span class="eval" style="color:#9AA3AF;">Fotofeld</span></div>
+            <div class="el inputbox" style="left:52.5%;top:56%;width:44%;height:12%;">
+              <span class="elab">Unterschrift · Prüfer ★</span><span class="eval" style="color:#9AA3AF;">Unterschriftsfeld</span></div>
+            <div class="el inputbox" style="left:3.5%;top:72%;width:93%;height:14%;">
+              <span class="elab">Bemerkungen</span><span class="eval" style="color:#9AA3AF;">Textbereich</span></div>
+            <div class="ftrzone"><span>Fußzeile: Kennzeichen · Datum</span><span>Seite {n} von {m}</span></div>
+          </div>
+          <div class="zoombar"><span>−</span><span>＋</span></div>
+        </div>
+      </div>
+      <div style="padding:0 22px 12px;"><div class="banner warn">✎ Unveröffentlichte Änderungen — beim Veröffentlichen entsteht v3. Bestehende Entwürfe bleiben auf v2.</div></div>
       <div class="toolbar">
+        <span class="btn plain">Seiten verwalten</span>
         <span class="btn plain">Vorschau</span>
         <span class="btn plain">Exportieren ⤴</span>
         <span class="btn primary" style="margin-left:auto;">Version veröffentlichen</span>
@@ -490,27 +580,78 @@
 
   <!-- ================= S-10 ================= -->
   <section>
-    <h2>S-10 · Feld-Einstellungen</h2>
-    <div class="screen-meta"><span class="req">REQ-007</span></div>
-    <p class="rationale">Antippen eines Felds im Designer öffnet dieses Sheet: Bezeichnung,
-    Pflichtfeld-Schalter und typspezifische Optionen (hier: Checklisten-Einträge; bei Fotofeldern
-    das Foto-Limit, Standard 10).</p>
-    <div class="ipad"><div class="screen"><div class="sheet-back" style="padding:40px 170px;"><div class="sheet">
+    <h2>S-10 · Element-Eigenschaften</h2>
+    <div class="screen-meta"><span class="req">REQ-071</span><span class="req">REQ-073</span></div>
+    <p class="rationale">Antippen eines Elements im Designer öffnet dieses Sheet: Bezeichnung,
+    Pflichtfeld, typspezifische Optionen (hier: Checklisten-Einträge) sowie Position und Größe in
+    Millimetern — für exakt gleiche Maße über Elemente und Seiten hinweg. „Position übernehmen"
+    kopiert Maße auf andere ausgewählte Elemente.</p>
+    <div class="ipad"><div class="screen"><div class="sheet-back" style="padding:40px 150px;"><div class="sheet">
       <div class="navbar">
         <span class="nav-l link">Abbrechen</span>
-        <span class="title">Feld bearbeiten · Checkliste</span>
+        <span class="title">Element · Checklisten-Gruppe</span>
         <span class="nav-r"><span class="btn primary">Fertig</span></span>
       </div>
       <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
         <div class="field"><div class="lab">Bezeichnung</div><div class="val">Rumpf außen</div></div>
         <div class="field"><div class="check" style="border:0;padding:2px 0;"><span style="font-weight:600;">Pflichtfeld</span>
           <span class="seg"><span class="on-ok">Ein</span><span>Aus</span></span></div></div>
+        <div class="field"><div class="lab">Position &amp; Größe (mm)</div>
+          <div style="display:flex;gap:10px;margin-top:6px;font-variant-numeric:tabular-nums;">
+            <span class="btn plain" style="font-size:12.5px;">x 8</span>
+            <span class="btn plain" style="font-size:12.5px;">y 96</span>
+            <span class="btn plain" style="font-size:12.5px;">B 194</span>
+            <span class="btn plain" style="font-size:12.5px;">H 34</span>
+            <span class="link" style="margin-left:auto;font-size:12.5px;">Position übernehmen…</span></div></div>
+        <div class="field"><div class="lab">Textgröße</div>
+          <div style="display:flex;gap:10px;margin-top:6px;"><span class="btn plain" style="font-size:12.5px;">Klein</span>
+            <span class="btn primary" style="font-size:12.5px;">Normal</span><span class="btn plain" style="font-size:12.5px;">Groß</span></div></div>
         <div class="field"><div class="lab">Checklisten-Einträge</div>
           <div class="check"><span>≡ Beplankung ohne Beschädigung</span><span class="link">Entfernen</span></div>
           <div class="check"><span>≡ Kennzeichen lesbar</span><span class="link">Entfernen</span></div>
           <div class="check"><span>≡ Antennen fest</span><span class="link">Entfernen</span></div>
           <div class="check"><span class="link">＋ Eintrag hinzufügen</span><span></span></div></div>
-        <div style="display:flex;"><span class="btn danger">Feld löschen</span></div>
+        <div style="display:flex;"><span class="btn danger">Element löschen</span></div>
+      </div>
+    </div></div></div></div>
+  </section>
+
+  <!-- ================= S-11 ================= -->
+  <section>
+    <h2>S-11 · Standard-Bausteine</h2>
+    <div class="screen-meta"><span class="req">REQ-070</span><span class="req">REQ-072</span></div>
+    <p class="rationale">Fertige Bausteine beschleunigen den Formularbau: Kopf- und Fußzeilen sowie
+    häufige Blöcke werden mit einem Tipp eingefügt und sind danach frei anpassbar. Kopf- und
+    Fußzeile wiederholen sich automatisch auf jeder Seite der Vorlage.</p>
+    <div class="ipad"><div class="screen"><div class="sheet-back" style="padding:40px 120px;"><div class="sheet">
+      <div class="navbar">
+        <span class="nav-l link">Schließen</span>
+        <span class="title">Standard-Bausteine</span><span class="nav-r"></span>
+      </div>
+      <div style="padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="block-card"><div class="bc-prev">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <div><div style="font-size:11px;font-weight:800;">Formulartitel</div>
+                <div style="font-size:7.5px;color:#6E6E73;">Untertitel · Version</div></div>
+              <div class="logo-ph" style="width:52px;height:26px;">LOGO</div></div>
+            <div style="display:flex;gap:6px;margin-top:8px;">
+              <span style="flex:1;border:1px solid #C9CFD8;border-radius:2px;font-size:7px;color:#6E6E73;padding:2px 4px;">Kennzeichen</span>
+              <span style="flex:1;border:1px solid #C9CFD8;border-radius:2px;font-size:7px;color:#6E6E73;padding:2px 4px;">Datum</span></div></div>
+          <div class="bc-foot"><span>Titelkopf mit Logo</span><span class="link">Einfügen</span></div></div>
+        <div class="block-card"><div class="bc-prev" style="display:flex;align-items:flex-end;">
+            <div style="width:100%;border-top:1px solid #C9CFD8;padding-top:5px;display:flex;justify-content:space-between;font-size:7.5px;color:#6E6E73;">
+              <span>Kennzeichen · Datum</span><span>Seite {n} von {m}</span></div></div>
+          <div class="bc-foot"><span>Fußzeile · Seitenzahl</span><span class="link">Einfügen</span></div></div>
+        <div class="block-card"><div class="bc-prev" style="display:flex;align-items:flex-end;">
+            <div style="width:100%;display:flex;gap:14px;font-size:7.5px;color:#6E6E73;">
+              <span style="flex:1;border-top:1px solid #26282B;padding-top:3px;">Ort, Datum</span>
+              <span style="flex:1.4;border-top:1px solid #26282B;padding-top:3px;">Unterschrift Prüfer</span></div></div>
+          <div class="bc-foot"><span>Unterschriftszeile</span><span class="link">Einfügen</span></div></div>
+        <div class="block-card"><div class="bc-prev">
+            <div style="font-size:8px;font-weight:700;margin-bottom:4px;">Checklisten-Block</div>
+            <div style="display:flex;justify-content:space-between;font-size:7.5px;color:#6E6E73;border-bottom:1px solid #E2E5EA;padding:2px 0;"><span>Eintrag 1</span><span class="mini-seg"><span>OK</span><span>Mangel</span><span>N. z.</span></span></div>
+            <div style="display:flex;justify-content:space-between;font-size:7.5px;color:#6E6E73;padding:2px 0;"><span>Eintrag 2</span><span class="mini-seg"><span>OK</span><span>Mangel</span><span>N. z.</span></span></div></div>
+          <div class="bc-foot"><span>Checklisten-Block</span><span class="link">Einfügen</span></div></div>
       </div>
     </div></div></div></div>
   </section>
@@ -521,8 +662,10 @@
   <section>
     <h2>Entschieden: Editor-Navigation Variante A</h2>
     <p class="rationale"><b>Variante A</b> (Seitenleiste links) wurde im Review am 2026-08-17
-    gewählt und ist in allen Mockups umgesetzt; der Designer (S-09) folgt demselben Muster.
-    Variante B (Seiten-Tabs oben) bleibt hier zur Dokumentation der Entscheidung stehen.</p>
+    gewählt. Mit dem Wechsel zur WYSIWYG-Formularansicht wird die Seitenleiste zur
+    <b>Seiten-Miniaturen-Leiste</b> (siehe S-02) — dasselbe Prinzip, jetzt mit visuellen
+    Vorschauen samt Validierungsstand. Variante B (Tabs oben) bleibt hier nur zur
+    Dokumentation der Entscheidung stehen.</p>
     <div class="variant-grid">
       <div>
         <h3>A · Seitenleiste (empfohlen)</h3>
@@ -567,10 +710,11 @@
   </section>
 
   <section>
-    <div class="qbox"><b>Passt dieses Design so?</b> Stand nach Review-Runde 1: Variante A ist
-      entschieden, S-01 bis S-08 waren ohne Änderungswünsche; neu hinzugekommen sind der
-      Requirements-Nachtrag N-01 (Formular-Designer, REQ-007…009) und die Screens S-09/S-10.
-      Mit deiner Freigabe gelten Nachtrag und Gesamtdesign als abgenommen, und Phase 3
-      (Architektur) beginnt.</div>
+    <div class="qbox"><b>Passt dieses Design so?</b> Stand nach Review-Runde 2: Der Designer ist
+      jetzt ein visueller Baukasten (S-09) mit A4-Leinwand, 4-mm-Andock-Raster, Ausrichtungslinien,
+      Element-Eigenschaften in mm (S-10) und Standard-Bausteinen (S-11); das Ausfüllen (S-02) ist
+      durchgängig WYSIWYG auf der gestalteten A4-Seite — identisch mit dem PDF. Mit deiner
+      Freigabe gelten Requirements-Nachtrag N-01 (Rev. 2, REQ-007/070–074/008/009) und das
+      Gesamtdesign S-01 bis S-11 als abgenommen, und Phase 3 (Architektur) beginnt.</div>
   </section>
 </div>

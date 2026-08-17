@@ -142,21 +142,49 @@ Approved-by-user: 2026-08-17
 
 ---
 
-## Nachtrag N-01 — Formular-Designer (2026-08-17)
+## Nachtrag N-01 — Visueller Formular-Designer (2026-08-17, Rev. 2)
 
 Status: **Zur Freigabe vorgelegt.**
-Anlass: Rückmeldung aus dem Phase-2-Review — Formulare sollen nicht nur
-importierbar sein, sondern direkt in der App erstellt und bearbeitet werden
-können.
+Anlass: Rückmeldung aus dem Phase-2-Review — Formulare sollen direkt in der App
+erstellt werden, und zwar als **visueller Baukasten mit frei positionierbaren
+Elementen auf einer Leinwand mit Andock-Raster** (Rev. 2 ersetzt die
+listenbasierte Designer-Fassung aus Rev. 1).
 
-### Neue Anforderungen
+### Grundmodell
 
-- **REQ-007** Die App enthält einen **Formular-Designer**: Nutzer können
-  Formular-Vorlagen in der App erstellen und bearbeiten — Seiten anlegen,
-  benennen und ordnen; Felder aller unterstützten Typen (Überschrift, Text,
-  Mehrzeilentext, Datum, Checkliste inkl. Einträgen, Foto inkl. Foto-Limit,
-  Unterschrift) hinzufügen, konfigurieren (Bezeichnung, Pflichtfeld), per Drag
-  &amp; Drop ordnen und löschen.
+- **REQ-007** Formular-Vorlagen bestehen aus Seiten im **A4-Hochformat**. Der
+  **Formular-Designer** ist Teil der App: Elemente werden frei auf der
+  Seiten-Leinwand platziert, verschoben und in der Größe angepasst. Designer,
+  Ausfüllansicht und PDF sind **deckungsgleich (WYSIWYG)**.
+- **REQ-070** **Baukasten (Element-Palette)** mit mindestens diesen Typen:
+  - *Struktur:* Kopfzeile (Header), Fußzeile (Footer) — je Vorlage definiert,
+    wiederholen sich automatisch auf jeder Seite;
+  - *Statisch:* Überschrift/Textblock, Linie/Unterstreichung, Rahmen/Box,
+    statische Liste (Aufzählung), Bild/Logo;
+  - *Eingabe:* Textfeld (einzeilig), Textbereich (mehrzeilig), Datumsfeld,
+    einzelne Checkbox, Checklisten-Gruppe (Einträge mit OK/Mangel/N. z.),
+    Auswahlliste (eine Option aus definierter Liste), Fotofeld (mit
+    Foto-Limit), Unterschriftsfeld.
+- **REQ-071** **Raster &amp; Andocken:** Die Leinwand hat ein sichtbares,
+  zuschaltbares Raster (Standard 4 mm). Elemente rasten beim Verschieben und
+  Skalieren am Raster sowie an Kanten und Mittelachsen anderer Elemente ein
+  (eingeblendete Ausrichtungslinien), sodass gleiche Positionen über Elemente
+  und Seiten hinweg gewährleistet sind. Zusätzlich: Ausrichten-/
+  Verteilen-Werkzeuge für Mehrfachauswahl und numerische Eingabe von
+  Position/Größe (in mm).
+- **REQ-072** **Standard-Bausteine:** Eine mitgelieferte Bibliothek bietet
+  fertige Header/Footer und Blöcke zum Einfügen (z. B. Titelkopf mit
+  Logo-Platzhalter, Titel und Metafeldern; Fußzeile mit Seitenzahl, Datum und
+  Unterschriftszeile; Checklisten-Block). Eingefügte Bausteine sind danach frei
+  anpassbar.
+- **REQ-073** **Eigenschaften je Element:** Bezeichnung, Pflichtfeld-Schalter
+  (bei Eingabetypen), typspezifische Optionen (Checklisten-/Auswahleinträge,
+  Foto-Limit), Textstil (Größe, fett), Position und Größe.
+- **REQ-074** **Ausfüllansicht = Formularansicht:** Beim Ausfüllen sieht der
+  Prüfer die gestaltete A4-Seite (zoombar, Hoch- und Querformat) und tippt
+  direkt in die Felder. Pflichtfeld-Markierung und Validierungshinweise werden
+  auf der Seite angezeigt; Foto, Unterschrift und Annotation öffnen wie bisher
+  als Sheets. Das exportierte PDF entspricht exakt dem gestalteten Layout.
 - **REQ-008** Vorlagen sind **versioniert**: Das Bearbeiten einer Vorlage, zu
   der Entwürfe existieren, erzeugt beim Veröffentlichen eine neue Version.
   Bestehende Entwürfe bleiben unverändert an ihre Version gebunden; neue
@@ -166,6 +194,14 @@ können.
   **exportiert** werden (Gegenstück zu REQ-006), z. B. zur Weitergabe an ein
   anderes iPad oder als Sicherung.
 
+### Präzisierung der Baseline
+
+REQ-001/REQ-002 werden durch das Layoutmodell konkretisiert: „Seiten mit
+geordneten Feldern" bedeutet fortan A4-Seiten mit positionierten Elementen;
+die Feldtypen aus REQ-002 gehen vollständig im Baukasten (REQ-070) auf. Die
+Validierungs-, Foto-, Unterschrift-, Abschluss- und Export-Anforderungen
+(REQ-020…042) gelten unverändert für die Formularansicht.
+
 ### Entschiedene Fragen zum Nachtrag
 
 | ID | Entscheidung |
@@ -173,3 +209,5 @@ können.
 | N-01a | Bearbeitung bei vorhandenen Entwürfen → neue Version (REQ-008) |
 | N-01b | Vorlagen-Export als JSON → ja (REQ-009) |
 | N-01c | Priorität: direkt nach Formular-Import (siehe Priorisierung) |
+| N-01d | Ausfüllen als WYSIWYG-Formularansicht → REQ-074 |
+| N-01e | Leinwand-/Seitenformat A4 hochkant → REQ-007 |
