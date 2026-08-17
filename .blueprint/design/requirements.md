@@ -104,15 +104,16 @@ PDF-Vorschau und PDF-Export. Vollständig offline nutzbar, ohne Backend.
   Entwurfs entfernt alle zugehörigen Daten inkl. Fotos und Unterschriften) und
   werden keinem Dritten bereitgestellt.
 - **REQ-065** Die Codebasis ist testbar aufgebaut; Formularlogik, Validierung,
-  Persistenz, PDF-Erzeugung und Import sind durch automatisierte Tests
-  abgedeckt.
+  Persistenz, PDF-Erzeugung, Import sowie Designer und Vorlagen-Versionierung
+  sind durch automatisierte Tests abgedeckt.
 
 ## Priorisierung der Erweiterungen
 
-Alle vier Erweiterungen sind im Scope. Implementierungsreihenfolge (nach
-Kern-MVP): 1. Formular-Import (REQ-006), 2. mehrere Formulare (REQ-005),
-3. Foto-Annotation (REQ-025), 4. Unterschriftenfeld (REQ-026). Die Reihenfolge
-kann in Phase 4 einvernehmlich angepasst werden.
+Alle Erweiterungen sind im Scope. Implementierungsreihenfolge (nach Kern-MVP):
+1. Formular-Import (REQ-006), 2. Formular-Designer (REQ-007…009, Nachtrag N-01),
+3. mehrere Formulare (REQ-005), 4. Foto-Annotation (REQ-025),
+5. Unterschriftenfeld (REQ-026). Die Reihenfolge kann in Phase 4 einvernehmlich
+angepasst werden.
 
 ## Explizit außerhalb des Scopes
 
@@ -138,3 +139,37 @@ kann in Phase 4 einvernehmlich angepasst werden.
 | Q-08 | Echtes Formular weiterhin ausstehend; Platzhalter → REQ-003 |
 
 Approved-by-user: 2026-08-17
+
+---
+
+## Nachtrag N-01 — Formular-Designer (2026-08-17)
+
+Status: **Zur Freigabe vorgelegt.**
+Anlass: Rückmeldung aus dem Phase-2-Review — Formulare sollen nicht nur
+importierbar sein, sondern direkt in der App erstellt und bearbeitet werden
+können.
+
+### Neue Anforderungen
+
+- **REQ-007** Die App enthält einen **Formular-Designer**: Nutzer können
+  Formular-Vorlagen in der App erstellen und bearbeiten — Seiten anlegen,
+  benennen und ordnen; Felder aller unterstützten Typen (Überschrift, Text,
+  Mehrzeilentext, Datum, Checkliste inkl. Einträgen, Foto inkl. Foto-Limit,
+  Unterschrift) hinzufügen, konfigurieren (Bezeichnung, Pflichtfeld), per Drag
+  &amp; Drop ordnen und löschen.
+- **REQ-008** Vorlagen sind **versioniert**: Das Bearbeiten einer Vorlage, zu
+  der Entwürfe existieren, erzeugt beim Veröffentlichen eine neue Version.
+  Bestehende Entwürfe bleiben unverändert an ihre Version gebunden; neue
+  Entwürfe verwenden die neueste Version. Unveröffentlichte Designer-Änderungen
+  sind als Entwurfszustand der Vorlage erkennbar.
+- **REQ-009** Vorlagen können als Definitionsdatei (JSON) über das Share-Sheet
+  **exportiert** werden (Gegenstück zu REQ-006), z. B. zur Weitergabe an ein
+  anderes iPad oder als Sicherung.
+
+### Entschiedene Fragen zum Nachtrag
+
+| ID | Entscheidung |
+| --- | --- |
+| N-01a | Bearbeitung bei vorhandenen Entwürfen → neue Version (REQ-008) |
+| N-01b | Vorlagen-Export als JSON → ja (REQ-009) |
+| N-01c | Priorität: direkt nach Formular-Import (siehe Priorisierung) |
