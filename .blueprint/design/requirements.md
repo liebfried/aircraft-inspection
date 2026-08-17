@@ -1,6 +1,6 @@
 # Aircraft Inspection — Requirements-Baseline
 
-Status: **Zur Freigabe vorgelegt.**
+Status: **Freigegeben.**
 Quelle: abgeleitet aus dem Vorgängerprojekt (`PROJECT-AIRCRAFT-INSPECTION-IPAD`)
 und vervollständigt durch die Discovery-Befragung vom 2026-08-17 (zwei
 Fragerunden, alle offenen Fragen entschieden).
@@ -136,3 +136,5 @@ kann in Phase 4 einvernehmlich angepasst werden.
 | Q-06 | iPadOS 17+, beide Orientierungen, Pencil optional → REQ-060 |
 | Q-07 | Kamera + Fotobibliothek, max. 10 Fotos/Feld → REQ-020/024 |
 | Q-08 | Echtes Formular weiterhin ausstehend; Platzhalter → REQ-003 |
+
+Approved-by-user: 2026-08-17
