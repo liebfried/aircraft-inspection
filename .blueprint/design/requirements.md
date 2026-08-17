@@ -1,9 +1,9 @@
 # Aircraft Inspection — Requirements-Baseline
 
-Status: **ENTWURF — noch nicht freigegeben.**
-Quelle: abgeleitet aus dem Vorgängerprojekt (`PROJECT-AIRCRAFT-INSPECTION-IPAD`,
-altes Blueprint/Copilot) und dessen dokumentierten offenen Entscheidungen; wird
-durch die laufende Discovery-Befragung vervollständigt.
+Status: **Zur Freigabe vorgelegt.**
+Quelle: abgeleitet aus dem Vorgängerprojekt (`PROJECT-AIRCRAFT-INSPECTION-IPAD`)
+und vervollständigt durch die Discovery-Befragung vom 2026-08-17 (zwei
+Fragerunden, alle offenen Fragen entschieden).
 
 ## Produktziel
 
@@ -18,92 +18,121 @@ PDF-Vorschau und PDF-Export. Vollständig offline nutzbar, ohne Backend.
 - **REQ-001** Die App stellt Prüfformulare aus einer strukturierten
   Formulardefinition dar (Seiten mit geordneten Feldern).
 - **REQ-002** Unterstützte Feldtypen mindestens: Überschrift, einzeiliger Text,
-  mehrzeiliger Text, Datum, Checkliste (Status je Eintrag), Foto/Kamera.
-- **REQ-003** Bis zur Lieferung des echten Prüfformulars nutzt die App genau ein
+  mehrzeiliger Text, Datum, Checkliste (Status je Eintrag), Foto, Unterschrift.
+- **REQ-003** Bis zur Lieferung des echten Prüfformulars nutzt die App ein
   Platzhalter-Formular. Es darf keine erfundenen fachlichen/regulatorischen
   Inhalte suggerieren.
-- **REQ-004** Die Formulardefinition ist so gestaltet, dass das echte Formular
-  später ohne Änderung der Engine eingepflegt werden kann (Daten, nicht Code).
+- **REQ-004** Formulare sind Daten, nicht Code: Das echte Formular (und weitere)
+  können später ohne Änderung der Engine eingepflegt werden.
+- **REQ-005** Die App verwaltet mehrere Formular-Vorlagen; beim Anlegen eines
+  Entwurfs wählt der Nutzer die Vorlage.
+- **REQ-006** Neue Formulardefinitionen können ohne App-Update eingespielt
+  werden (Import einer Definitionsdatei, z. B. JSON, über die Dateien-App /
+  das Share-Sheet). Fehlerhafte Definitionen werden mit verständlicher
+  Fehlermeldung abgewiesen und ändern den Bestand nicht.
 
 ### Entwürfe (Drafts)
 
-- **REQ-010** Nutzer können zu einem Formular beliebig viele Entwürfe anlegen,
-  öffnen, weiterbearbeiten und löschen.
+- **REQ-010** Nutzer können je Vorlage beliebig viele Entwürfe anlegen, öffnen,
+  weiterbearbeiten und löschen.
 - **REQ-011** Alle Eingaben werden automatisch gespeichert (Autosave); es gibt
   keinen verlierbaren „ungespeicherten" Zustand.
 - **REQ-012** Entwürfe überleben App-Neustart, App-Update und Gerät-Neustart
   (lokale Persistenz).
 - **REQ-013** Die App funktioniert vollständig offline; keine Funktion setzt
   eine Netzwerkverbindung voraus.
+- **REQ-014** Entwürfe und Fotos bleiben bis zum manuellen Löschen durch den
+  Nutzer erhalten; es gibt keine automatische Löschung.
+- **REQ-015** Ein vollständig validierter Entwurf kann explizit
+  **abgeschlossen** werden: Er wird schreibgeschützt (Archiv), sein PDF bleibt
+  jederzeit erneut erzeugbar. Ein abgeschlossener Entwurf kann bewusst
+  **wiedereröffnet** werden; die Wiedereröffnung wird im Entwurf vermerkt
+  (Zeitpunkt) und im PDF ausgewiesen.
 
 ### Fotos
 
-- **REQ-020** Fotofelder erlauben die Aufnahme per Kamera direkt aus dem
-  Formular heraus.
+- **REQ-020** Fotofelder erlauben Aufnahme per Kamera direkt aus dem Formular
+  sowie Import aus der Fotobibliothek.
 - **REQ-021** Angehängte Fotos haben eine Vorschau und können gedreht und
   zugeschnitten werden.
 - **REQ-022** Fotos werden mit konfigurierbarer Zielgröße/Kompression
-  gespeichert (Presets klein/mittel/groß), um Speicher und PDF-Größe zu
-  begrenzen.
+  gespeichert (Presets klein/mittel/groß).
 - **REQ-023** Fotos sind Teil des Entwurfs und werden mit ihm gespeichert und
   gelöscht.
+- **REQ-024** Pro Fotofeld sind maximal 10 Fotos zulässig; die Grenze ist in
+  der Formulardefinition pro Feld übersteuerbar.
+- **REQ-025** Fotos können annotiert werden (Freihand-Markierungen, z. B.
+  Schadensstelle einkreisen — Finger oder Apple Pencil). Das Original bleibt
+  erhalten; die Annotation ist nachträglich änderbar und erscheint im PDF.
+
+### Unterschrift
+
+- **REQ-026** Der Feldtyp Unterschrift erfasst eine handschriftliche
+  Unterschrift (Finger oder Apple Pencil) mit Name des Unterzeichnenden und
+  Zeitpunkt; die Unterschrift erscheint im PDF.
 
 ### Validierung
 
-- **REQ-030** Pflichtfelder sind als solche definiert; die App zeigt fehlende
-  Pflichtangaben verständlich und feldbezogen an.
-- **REQ-031** Der PDF-Export eines unvollständigen Entwurfs wird verhindert
-  oder erfordert eine bewusste Bestätigung (genaues Verhalten: offene Frage
-  Q-05).
+- **REQ-030** Pflichtfelder sind in der Formulardefinition markiert; die App
+  zeigt fehlende Pflichtangaben verständlich und feldbezogen an.
+- **REQ-031** Der PDF-Export eines unvollständigen Entwurfs ist möglich,
+  erfordert aber eine ausdrückliche Bestätigung nach Warnung; das erzeugte PDF
+  ist deutlich als „ENTWURF — unvollständig" gekennzeichnet.
+- **REQ-032** Abschließen (REQ-015) ist nur bei vollständig erfüllter
+  Pflichtfeld-Validierung möglich.
 
 ### PDF
 
 - **REQ-040** Die App erzeugt aus einem Entwurf lokal (ohne Netz) ein PDF mit
-  allen Feldwerten und angehängten Fotos.
+  allen Feldwerten, Fotos (inkl. Annotationen) und Unterschriften.
 - **REQ-041** Das PDF kann in der App als Vorschau angezeigt werden.
 - **REQ-042** Das PDF kann über das iOS-Share-Sheet exportiert werden (Dateien,
   Mail, AirDrop etc.).
 
-### Erweiterungen (Priorisierung in Discovery — Q-01)
-
-- **REQ-050 (Kandidat)** Unterschriftenfeld: handschriftliche Unterschrift
-  (Finger/Apple Pencil) als Feldtyp, im PDF wiedergegeben.
-- **REQ-051 (Kandidat)** Foto-Annotation: Markierungen/Zeichnungen auf Fotos
-  (z. B. Schadensstelle einkreisen).
-- **REQ-052 (Kandidat)** Mehrere Formulare: Verwaltung mehrerer
-  Formular-Vorlagen und Auswahl beim Anlegen eines Entwurfs.
-- **REQ-053 (Kandidat)** Formular-Import: neue Formulardefinitionen ohne
-  App-Update einspielen (z. B. JSON-Datei über die Dateien-App).
-
 ## Nicht-funktionale Anforderungen
 
-- **REQ-060** Zielplattform: iPad (iPadOS); Mindestversion und unterstützte
-  Geräte: offene Frage Q-06.
+- **REQ-060** Zielplattform: iPadOS 17+, alle davon unterstützten iPads;
+  Hoch- und Querformat. Apple Pencil wird unterstützt, ist aber nie
+  Voraussetzung.
 - **REQ-061** Bedienbarkeit im Prüfumfeld: große Touch-Ziele, Nutzung auch im
-  Stehen/mit einer Hand; Orientierung (Hoch-/Querformat): offene Frage Q-06.
-- **REQ-062** Keine Cloud-, Analytics- oder Tracking-Dienste; keine Daten
-  verlassen das Gerät außer durch expliziten Nutzer-Export.
-- **REQ-063** Sprache der Benutzeroberfläche: offene Frage Q-04.
-- **REQ-064** Die Codebasis ist testbar aufgebaut; Formularlogik, Validierung,
-  Persistenz und PDF-Erzeugung sind durch automatisierte Tests abgedeckt
-  (Verbesserung gegenüber Vorgängerprojekt: dort 0 Unit-Tests).
+  Stehen; alle Kernfunktionen mit dem Finger bedienbar.
+- **REQ-062** Keine Cloud-, Analytics- oder Tracking-Dienste; Daten verlassen
+  das Gerät ausschließlich durch expliziten Nutzer-Export.
+- **REQ-063** UI-Sprache: Deutsch.
+- **REQ-064** Personenbezogene Daten (Prüfername, Unterschriften) werden
+  ausschließlich lokal gespeichert, sind vollständig löschbar (Löschen des
+  Entwurfs entfernt alle zugehörigen Daten inkl. Fotos und Unterschriften) und
+  werden keinem Dritten bereitgestellt.
+- **REQ-065** Die Codebasis ist testbar aufgebaut; Formularlogik, Validierung,
+  Persistenz, PDF-Erzeugung und Import sind durch automatisierte Tests
+  abgedeckt.
+
+## Priorisierung der Erweiterungen
+
+Alle vier Erweiterungen sind im Scope. Implementierungsreihenfolge (nach
+Kern-MVP): 1. Formular-Import (REQ-006), 2. mehrere Formulare (REQ-005),
+3. Foto-Annotation (REQ-025), 4. Unterschriftenfeld (REQ-026). Die Reihenfolge
+kann in Phase 4 einvernehmlich angepasst werden.
 
 ## Explizit außerhalb des Scopes
 
 - Backend-, Cloud- oder Synchronisierungs-Infrastruktur
 - App-Store-Release, Signing- und Zertifikatsarbeiten
-- Regulatorische Konformitätszusagen (TÜV, Luftfahrt, Datenschutz-Audits)
+- Regulatorische Konformitätszusagen (TÜV, Luftfahrt, Datenschutz-Audits);
+  REQ-064 dokumentiert Datenschutz-Grundsätze, ersetzt aber keine
+  Rechtsprüfung
 - Erfundene Inhalte für das echte Prüfformular
+- Mehrbenutzer-/Rollenkonzepte auf dem Gerät
 
-## Offene Fragen (Discovery)
+## Entschiedene Discovery-Fragen
 
-| ID | Frage | Status |
-| --- | --- | --- |
-| Q-01 | Welche Erweiterungen (REQ-050…053) sind im Scope, in welcher Priorität? | offen |
-| Q-02 | Werden personenbezogene Daten verarbeitet (Prüfername, Unterschrift)? DSGVO-Relevanz? | offen |
-| Q-03 | Aufbewahrung: Wie lange bleiben Entwürfe/exportierte PDFs auf dem Gerät? Löschregeln? | offen |
-| Q-04 | UI-Sprache: Deutsch, Englisch oder beides? | offen |
-| Q-05 | Verhalten beim Export unvollständiger Entwürfe: hart blockieren oder mit Warnung erlauben? | offen |
-| Q-06 | iPadOS-Mindestversion, Zielgeräte, Orientierung, Apple-Pencil-Pflicht? | offen |
-| Q-07 | Fotoquellen: nur Kamera oder auch Fotobibliothek-Import? Max. Fotos pro Feld? | offen |
-| Q-08 | Echtes Prüfformular: wer liefert es wann, in welchem Format? | offen (laut Nutzer: weiterhin Platzhalter) |
+| ID | Entscheidung |
+| --- | --- |
+| Q-01 | Alle vier Erweiterungen im Scope; Reihenfolge: Import, Mehrformular, Annotation, Unterschrift |
+| Q-02 | Ja, Prüferdaten → REQ-064 |
+| Q-03 | Aufbewahrung bis zum manuellen Löschen → REQ-014 |
+| Q-04 | UI Deutsch → REQ-063 |
+| Q-05 | Export mit Warnung + „ENTWURF"-Kennzeichnung → REQ-031 |
+| Q-06 | iPadOS 17+, beide Orientierungen, Pencil optional → REQ-060 |
+| Q-07 | Kamera + Fotobibliothek, max. 10 Fotos/Feld → REQ-020/024 |
+| Q-08 | Echtes Formular weiterhin ausstehend; Platzhalter → REQ-003 |
