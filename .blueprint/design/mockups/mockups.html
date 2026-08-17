@@ -1,0 +1,485 @@
+<!-- Aircraft Inspection — Phase-2-Mockups. Self-contained, direkt im Browser zu öffnen. -->
+<title>Aircraft Inspection Mockups</title>
+<style>
+  :root {
+    --page-bg: #F3F5F8; --page-ink: #1D2530; --page-muted: #5A6675;
+    --page-line: #D9DFE7; --accent: #175CB6;
+    --app-bg: #F2F2F7; --app-card: #FFFFFF; --app-ink: #1C1C1E; --app-muted: #6E6E73;
+    --app-line: #E3E3E8; --tint: #175CB6;
+    --ok: #2E7D46; --warn: #C4640A; --bad: #C0392B;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page-bg); color: var(--page-ink);
+    font: 16px/1.55 -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 48px 24px 96px; }
+  header.page h1 { font-size: 34px; line-height: 1.15; margin: 4px 0 8px; text-wrap: balance; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 600; color: var(--accent); }
+  .lede { color: var(--page-muted); max-width: 62ch; margin: 0; }
+  section { margin-top: 56px; }
+  section > h2 { font-size: 22px; margin: 0 0 4px; }
+  .screen-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0 14px; }
+  .req { font: 600 11.5px/1 -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    letter-spacing: .04em; color: var(--accent); background: #E3ECF8; border-radius: 4px; padding: 4px 7px; }
+  .rationale { color: var(--page-muted); font-size: 14.5px; max-width: 72ch; margin: 0 0 18px; }
+  .hairline { border: 0; border-top: 1px solid var(--page-line); margin: 56px 0 0; }
+
+  /* ---------- iPad-Rahmen ---------- */
+  .ipad { background: #202327; border-radius: 22px; padding: 14px; box-shadow: 0 14px 34px rgba(29,37,48,.16); }
+  .screen { background: var(--app-bg); border-radius: 10px; overflow: hidden; color: var(--app-ink);
+    font: 14px/1.45 -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif; }
+  .statusbar { display: flex; justify-content: space-between; padding: 6px 16px 2px; font-size: 11.5px; color: var(--app-muted); }
+  .navbar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.94); border-bottom: 1px solid var(--app-line); padding: 10px 16px; }
+  .navbar .title { text-align: center; font-weight: 600; font-size: 15px; }
+  .nav-l { justify-self: start; } .nav-r { justify-self: end; display: flex; gap: 14px; align-items: center; }
+  .link { color: var(--tint); font-weight: 500; }
+  .btn { display: inline-block; border-radius: 9px; padding: 7px 14px; font-weight: 600; font-size: 13.5px; }
+  .btn.primary { background: var(--tint); color: #fff; }
+  .btn.plain { color: var(--tint); background: #E9F0FA; }
+  .btn.danger { color: var(--bad); background: #F7E7E4; }
+  .btn.disabled { background: #E4E4E9; color: #9A9AA1; }
+
+  .split { display: grid; grid-template-columns: 300px 1fr; min-height: 560px; }
+  .sidebar { background: #EDEDF2; border-right: 1px solid var(--app-line); padding: 12px; }
+  .sb-h { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--app-muted); margin: 10px 6px 6px; }
+  .sb-row { display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    padding: 10px 12px; border-radius: 9px; font-weight: 500; }
+  .sb-row.active { background: var(--tint); color: #fff; }
+  .sb-row .cnt { font-size: 12px; color: var(--app-muted); } .sb-row.active .cnt { color: #DCE7F7; }
+  .content { padding: 18px 22px; }
+
+  .card { background: var(--app-card); border-radius: 12px; border: 1px solid var(--app-line); }
+  .list > .lrow { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-bottom: 1px solid var(--app-line); }
+  .list > .lrow:last-child { border-bottom: 0; }
+  .lrow .grow { flex: 1; min-width: 0; }
+  .lrow .t { font-weight: 600; } .lrow .s { font-size: 12.5px; color: var(--app-muted); }
+  .chev { color: #B4B4BB; font-weight: 600; }
+  .pill { font-size: 11.5px; font-weight: 700; border-radius: 99px; padding: 4px 10px; white-space: nowrap; }
+  .pill.prog { background: #FDF1E3; color: var(--warn); }
+  .pill.done { background: #E5F2E9; color: var(--ok); }
+  .pill.open { background: #E9F0FA; color: var(--tint); }
+
+  .fieldlist { display: flex; flex-direction: column; gap: 12px; }
+  .field { background: var(--app-card); border: 1px solid var(--app-line); border-radius: 12px; padding: 12px 16px; }
+  .field .lab { font-size: 12.5px; font-weight: 600; color: var(--app-muted); display: flex; gap: 6px; align-items: center; }
+  .req-star { color: var(--bad); font-weight: 800; }
+  .field .val { margin-top: 4px; font-size: 15px; }
+  .field.missing { border-color: #E5B8B1; box-shadow: 0 0 0 3px #F7E7E4 inset; }
+  .field .err { color: var(--bad); font-size: 12.5px; margin-top: 6px; font-weight: 600; }
+  .h-field { font-size: 17px; font-weight: 700; margin: 6px 0 0; }
+  .check { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--app-line); }
+  .check:last-child { border-bottom: 0; }
+  .seg { display: inline-flex; border: 1px solid var(--app-line); border-radius: 8px; overflow: hidden; font-size: 12px; font-weight: 600; }
+  .seg span { padding: 5px 10px; color: var(--app-muted); background: #fff; }
+  .seg .on-ok { background: var(--ok); color: #fff; }
+  .seg .on-bad { background: var(--bad); color: #fff; }
+
+  .thumbs { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+  .thumb { width: 92px; height: 68px; border-radius: 8px; background: linear-gradient(135deg,#C7D3E2,#8FA5C0); position: relative; }
+  .thumb.annotated::after { content: ""; position: absolute; inset: 14px 26px; border: 3px solid var(--bad); border-radius: 50%; }
+  .thumb.add { background: #EDEDF2; border: 2px dashed #B8BEC9; display: flex; align-items: center; justify-content: center;
+    color: var(--tint); font-size: 26px; font-weight: 300; }
+  .cnt-note { font-size: 12px; color: var(--app-muted); margin-top: 8px; }
+
+  .toolbar { display: flex; gap: 10px; align-items: center; background: rgba(255,255,255,.94);
+    border-top: 1px solid var(--app-line); padding: 10px 16px; }
+  .autosave { margin-left: auto; font-size: 12px; color: var(--app-muted); }
+  .dot-ok { color: var(--ok); }
+
+  .sheet-back { background: rgba(20,24,30,.45); padding: 46px 90px; }
+  .sheet { background: var(--app-card); border-radius: 14px; overflow: hidden; box-shadow: 0 22px 50px rgba(0,0,0,.3); }
+  .sheet .navbar { background: #FAFAFC; }
+
+  .canvas { background: repeating-linear-gradient(0deg,#fff,#fff 34px,#F4F6F9 35px); border: 1px solid var(--app-line);
+    border-radius: 12px; min-height: 200px; position: relative; }
+  .sig-line { position: absolute; left: 8%; right: 8%; bottom: 34px; border-bottom: 1.5px solid #9AA3AF; }
+  .sig-stroke { position: absolute; left: 14%; bottom: 40px; width: 46%; height: 64px; }
+  .anno-canvas { min-height: 330px; background: linear-gradient(135deg,#C7D3E2 0%,#8FA5C0 60%,#6E87A6 100%); border-radius: 12px; position: relative; }
+  .anno-circle { position: absolute; left: 32%; top: 28%; width: 150px; height: 110px; border: 4px solid var(--bad); border-radius: 50%; }
+  .anno-tools { position: absolute; right: 14px; top: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .tool { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,.92); display: flex; align-items: center;
+    justify-content: center; font-size: 17px; box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+  .tool.sel { outline: 2.5px solid var(--tint); }
+
+  .pdfpage { background: #fff; border: 1px solid var(--app-line); box-shadow: 0 4px 14px rgba(0,0,0,.10);
+    width: 380px; padding: 26px 30px; position: relative; font-size: 10.5px; color: #333; }
+  .pdfpage h4 { margin: 0 0 2px; font-size: 13px; } .pdfpage .sub { color: #777; margin-bottom: 12px; }
+  .pdfrow { display: flex; justify-content: space-between; border-bottom: 1px solid #EEE; padding: 5px 0; }
+  .pdfimgs { display: flex; gap: 6px; margin-top: 10px; }
+  .pdfimg { width: 62px; height: 46px; background: linear-gradient(135deg,#C7D3E2,#8FA5C0); }
+  .watermark { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+  .watermark span { transform: rotate(-24deg); border: 3px solid rgba(192,57,43,.55); color: rgba(192,57,43,.65);
+    font-weight: 800; font-size: 21px; letter-spacing: .08em; padding: 8px 20px; border-radius: 6px; }
+
+  .banner { display: flex; gap: 10px; align-items: center; border-radius: 10px; padding: 10px 14px; font-size: 13px; font-weight: 600; }
+  .banner.lock { background: #E5F2E9; color: var(--ok); }
+  .banner.warn { background: #FDF1E3; color: var(--warn); }
+  .banner.err { background: #F7E7E4; color: var(--bad); }
+
+  .flow { display: flex; flex-wrap: wrap; gap: 10px 6px; align-items: center; margin-top: 18px; }
+  .flow .node { background: #fff; border: 1.5px solid var(--accent); color: var(--accent);
+    border-radius: 10px; padding: 9px 14px; font-weight: 600; font-size: 13.5px; }
+  .flow .node.sub { border-style: dashed; font-weight: 500; }
+  .flow .arr { color: var(--page-muted); font-size: 15px; padding: 0 2px; }
+  .variant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 860px) { .variant-grid { grid-template-columns: 1fr; } .split { grid-template-columns: 240px 1fr; } }
+  .variant-grid h3 { margin: 0 0 8px; font-size: 16px; }
+  .qbox { background: #fff; border: 1px solid var(--page-line); border-left: 4px solid var(--accent);
+    border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+  .qbox b { color: var(--accent); }
+  ul.notes { color: var(--page-muted); font-size: 14.5px; max-width: 76ch; }
+</style>
+
+<div class="wrap">
+  <header class="page">
+    <div class="eyebrow">Phase 2 · UI-Design zur Abnahme</div>
+    <h1>Aircraft Inspection Mockups</h1>
+    <p class="lede">Reviewbare Bildschirm-Entwürfe der iPad-App, abgeleitet aus der freigegebenen
+    Requirements-Baseline. Jeder Screen nennt die Anforderungen (REQ-…), die er umsetzt.
+    Die Optik folgt bewusst dem nativen iPadOS-Idiom — vertraut für Prüfer, ohne Einarbeitung.</p>
+  </header>
+
+  <section>
+    <h2>Navigationsfluss</h2>
+    <div class="flow">
+      <span class="node">Vorlagen &amp; Entwürfe (S-01)</span><span class="arr">→</span>
+      <span class="node">Formular-Editor (S-02)</span><span class="arr">→</span>
+      <span class="node">PDF-Vorschau (S-06)</span><span class="arr">→</span>
+      <span class="node">Export / Abschluss (S-07)</span>
+    </div>
+    <div class="flow">
+      <span class="node sub">Foto-Annotation (S-03)</span>
+      <span class="node sub">Unterschrift (S-04)</span>
+      <span class="node sub">Validierung (S-05)</span>
+      <span class="arr">— als Sheets aus dem Editor</span>
+      <span class="node sub">Formular-Import (S-08)</span>
+      <span class="arr">— aus S-01</span>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- ================= S-01 ================= -->
+  <section>
+    <h2>S-01 · Vorlagen &amp; Entwürfe</h2>
+    <div class="screen-meta">
+      <span class="req">REQ-005</span><span class="req">REQ-006</span><span class="req">REQ-010</span>
+      <span class="req">REQ-014</span><span class="req">REQ-015</span>
+    </div>
+    <p class="rationale">Startbildschirm als iPad-Split-View: links die Formular-Vorlagen (mit
+    Import), rechts die Entwürfe der gewählten Vorlage mit Status. Abgeschlossene Entwürfe bleiben
+    sichtbar (Archiv), Löschen nur explizit per Wischgeste/Bearbeiten-Modus.</p>
+    <div class="ipad"><div class="screen">
+      <div class="statusbar"><span>9:41</span><span>Mo. 17. Aug.</span><span>WLAN aus · 100 %</span></div>
+      <div class="split">
+        <div class="sidebar">
+          <div class="sb-h">Formular-Vorlagen</div>
+          <div class="sb-row active"><span>Platzhalter-Prüfformular</span><span class="cnt">4</span></div>
+          <div class="sb-row"><span>Sichtprüfung Zelle (Beispiel)</span><span class="cnt">1</span></div>
+          <div class="sb-h">Verwaltung</div>
+          <div class="sb-row"><span class="link">＋ Formular importieren…</span></div>
+        </div>
+        <div class="content">
+          <div class="navbar" style="border-radius:10px 10px 0 0;">
+            <span class="nav-l" style="font-weight:700;font-size:17px;">Entwürfe</span>
+            <span class="title"></span>
+            <span class="nav-r"><span class="link">Bearbeiten</span><span class="btn primary">＋ Neuer Entwurf</span></span>
+          </div>
+          <div class="card list" style="border-radius:0 0 12px 12px;">
+            <div class="lrow"><div class="grow"><div class="t">D-EFGH · Wartung 200 h</div>
+              <div class="s">Geändert heute, 09:12 · 3 von 5 Pflichtfeldern</div></div>
+              <span class="pill prog">In Bearbeitung</span><span class="chev">›</span></div>
+            <div class="lrow"><div class="grow"><div class="t">D-ABCD · Vorflugkontrolle</div>
+              <div class="s">Geändert gestern, 16:40 · alle Pflichtfelder erfüllt</div></div>
+              <span class="pill open">Bereit zum Abschluss</span><span class="chev">›</span></div>
+            <div class="lrow"><div class="grow"><div class="t">D-KLMN · Jahresnachprüfung</div>
+              <div class="s">Abgeschlossen am 12.08.2026 · schreibgeschützt</div></div>
+              <span class="pill done">Abgeschlossen</span><span class="chev">›</span></div>
+            <div class="lrow"><div class="grow"><div class="t">D-QRST · Triebwerkskontrolle</div>
+              <div class="s">Geändert 05.08.2026 · 1 von 5 Pflichtfeldern</div></div>
+              <span class="pill prog">In Bearbeitung</span><span class="chev">›</span></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ================= S-02 ================= -->
+  <section>
+    <h2>S-02 · Formular-Editor</h2>
+    <div class="screen-meta">
+      <span class="req">REQ-001</span><span class="req">REQ-002</span><span class="req">REQ-011</span>
+      <span class="req">REQ-020</span><span class="req">REQ-024</span><span class="req">REQ-030</span>
+    </div>
+    <p class="rationale">Das Herzstück: links die Formularseiten mit Validierungsstand je Seite,
+    rechts die Felder als Karten. Pflichtfelder tragen ein ★; fehlende werden rot umrandet und
+    beschriftet — nie nur Farbe (Barrierefreiheit). Autosave wird dezent bestätigt, es gibt
+    keinen Speichern-Knopf.</p>
+    <div class="ipad"><div class="screen">
+      <div class="statusbar"><span>9:41</span><span></span><span>100 %</span></div>
+      <div class="navbar">
+        <span class="nav-l link">‹ Entwürfe</span>
+        <span class="title">D-EFGH · Wartung 200 h</span>
+        <span class="nav-r"><span class="pill prog">2 Pflichtfelder offen</span></span>
+      </div>
+      <div class="split" style="min-height:520px;">
+        <div class="sidebar">
+          <div class="sb-h">Seiten</div>
+          <div class="sb-row active"><span>1 · Allgemeine Angaben</span><span class="cnt">⚠ 1</span></div>
+          <div class="sb-row"><span>2 · Sichtprüfung</span><span class="cnt">✓</span></div>
+          <div class="sb-row"><span>3 · Befunde &amp; Fotos</span><span class="cnt">⚠ 1</span></div>
+          <div class="sb-row"><span>4 · Abschluss</span><span class="cnt">–</span></div>
+        </div>
+        <div class="content"><div class="fieldlist">
+          <div class="field"><div class="h-field">Allgemeine Angaben</div></div>
+          <div class="field"><div class="lab">Luftfahrzeug-Kennzeichen <span class="req-star">★</span></div>
+            <div class="val">D-EFGH</div></div>
+          <div class="field missing"><div class="lab">Prüfer (Name) <span class="req-star">★</span></div>
+            <div class="val" style="color:#9A9AA1;">Noch nicht ausgefüllt</div>
+            <div class="err">Pflichtfeld — bitte ausfüllen</div></div>
+          <div class="field"><div class="lab">Datum der Prüfung <span class="req-star">★</span></div>
+            <div class="val">17.08.2026 ▾</div></div>
+          <div class="field"><div class="lab">Checkliste · Rumpf außen</div>
+            <div class="check"><span>Beplankung ohne Beschädigung</span><span class="seg"><span class="on-ok">OK</span><span>Mangel</span><span>N. z.</span></span></div>
+            <div class="check"><span>Kennzeichen lesbar</span><span class="seg"><span class="on-ok">OK</span><span>Mangel</span><span>N. z.</span></span></div>
+            <div class="check"><span>Antennen fest</span><span class="seg"><span>OK</span><span class="on-bad">Mangel</span><span>N. z.</span></span></div>
+          </div>
+          <div class="field"><div class="lab">Fotos · Befundstellen</div>
+            <div class="thumbs"><span class="thumb"></span><span class="thumb annotated"></span><span class="thumb add">＋</span></div>
+            <div class="cnt-note">2 von max. 10 Fotos · Kamera oder Fotobibliothek</div></div>
+          <div class="field"><div class="lab">Bemerkungen</div>
+            <div class="val">Kleiner Lackschaden an der linken Tragfläche, siehe Foto 2. Antenne 3 nachziehen.</div></div>
+        </div></div>
+      </div>
+      <div class="toolbar">
+        <span class="btn plain">Validierung prüfen</span>
+        <span class="btn plain">PDF-Vorschau</span>
+        <span class="btn disabled">Abschließen</span>
+        <span class="autosave"><span class="dot-ok">●</span> Automatisch gesichert, 09:41</span>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ================= S-03 ================= -->
+  <section>
+    <h2>S-03 · Foto-Annotation</h2>
+    <div class="screen-meta"><span class="req">REQ-021</span><span class="req">REQ-025</span></div>
+    <p class="rationale">Vollbild-Sheet über dem Editor. Freihand-Markierung mit Finger oder
+    Pencil; Werkzeuge rechts (Stift, Farbe, Radierer, Rückgängig). Das Original bleibt erhalten —
+    „Original anzeigen" blendet die Annotation temporär aus. Drehen/Zuschneiden auf derselben Ebene.</p>
+    <div class="ipad"><div class="screen"><div class="sheet-back"><div class="sheet">
+      <div class="navbar">
+        <span class="nav-l link">Abbrechen</span>
+        <span class="title">Foto 2 von 2 · Befundstellen</span>
+        <span class="nav-r"><span class="link">Original anzeigen</span><span class="btn primary">Fertig</span></span>
+      </div>
+      <div style="padding:16px;">
+        <div class="anno-canvas">
+          <div class="anno-circle"></div>
+          <div class="anno-tools">
+            <span class="tool sel">✎</span><span class="tool" style="color:var(--bad);">●</span>
+            <span class="tool">◌</span><span class="tool">↺</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:12px;">
+          <span class="btn plain">Drehen</span><span class="btn plain">Zuschneiden</span>
+          <span class="btn danger" style="margin-left:auto;">Foto löschen</span>
+        </div>
+      </div>
+    </div></div></div></div>
+  </section>
+
+  <!-- ================= S-04 ================= -->
+  <section>
+    <h2>S-04 · Unterschrift</h2>
+    <div class="screen-meta"><span class="req">REQ-026</span></div>
+    <p class="rationale">Unterschriften-Sheet mit großzügiger Schreibfläche (Finger oder Pencil),
+    Namensfeld und automatisch gesetztem Zeitpunkt. Der Zeitpunkt wird beim Unterschreiben fixiert
+    und im PDF ausgewiesen.</p>
+    <div class="ipad"><div class="screen"><div class="sheet-back"><div class="sheet">
+      <div class="navbar">
+        <span class="nav-l link">Abbrechen</span>
+        <span class="title">Unterschrift · Prüfer</span>
+        <span class="nav-r"><span class="link">Löschen</span><span class="btn primary">Übernehmen</span></span>
+      </div>
+      <div style="padding:16px;">
+        <div class="field" style="margin-bottom:12px;"><div class="lab">Name des Unterzeichnenden <span class="req-star">★</span></div>
+          <div class="val">L. Czenkusch</div></div>
+        <div class="canvas">
+          <svg class="sig-stroke" viewBox="0 0 300 70" aria-hidden="true">
+            <path d="M8 52 C 40 8, 62 66, 92 40 S 150 12, 172 44 S 238 66, 292 24"
+              fill="none" stroke="#1C1C1E" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <div class="sig-line"></div>
+        </div>
+        <div class="cnt-note">Zeitpunkt wird automatisch erfasst: 17.08.2026, 09:44</div>
+      </div>
+    </div></div></div></div>
+  </section>
+
+  <!-- ================= S-05 ================= -->
+  <section>
+    <h2>S-05 · Validierungsübersicht</h2>
+    <div class="screen-meta"><span class="req">REQ-030</span><span class="req">REQ-032</span></div>
+    <p class="rationale">Auf „Validierung prüfen": kompaktes Sheet mit allen offenen Pflichtfeldern,
+    gruppiert nach Seite. Jede Zeile springt direkt zum Feld. Ist alles erfüllt, bietet das Sheet
+    das Abschließen an.</p>
+    <div class="ipad"><div class="screen"><div class="sheet-back" style="padding:46px 170px;"><div class="sheet">
+      <div class="navbar">
+        <span class="nav-l link">Schließen</span>
+        <span class="title">Validierung</span><span class="nav-r"></span>
+      </div>
+      <div style="padding:16px;">
+        <div class="banner warn">⚠ 2 Pflichtfelder sind noch offen</div>
+        <div class="card list" style="margin-top:12px;">
+          <div class="lrow"><div class="grow"><div class="t">Prüfer (Name)</div>
+            <div class="s">Seite 1 · Allgemeine Angaben</div></div><span class="link">Zum Feld ›</span></div>
+          <div class="lrow"><div class="grow"><div class="t">Unterschrift · Prüfer</div>
+            <div class="s">Seite 4 · Abschluss</div></div><span class="link">Zum Feld ›</span></div>
+        </div>
+        <div class="cnt-note" style="margin-top:12px;">Abschließen ist möglich, sobald alle Pflichtfelder erfüllt sind.</div>
+      </div>
+    </div></div></div></div>
+  </section>
+
+  <!-- ================= S-06 ================= -->
+  <section>
+    <h2>S-06 · PDF-Vorschau &amp; Export</h2>
+    <div class="screen-meta">
+      <span class="req">REQ-031</span><span class="req">REQ-040</span><span class="req">REQ-041</span><span class="req">REQ-042</span>
+    </div>
+    <p class="rationale">Seitengetreue Vorschau vor dem Export. Bei unvollständigen Entwürfen warnt
+    ein Banner, der Export bleibt nach Bestätigung möglich — das PDF trägt dann eine deutliche
+    „ENTWURF — unvollständig"-Kennzeichnung auf jeder Seite. Export über das Standard-Share-Sheet.</p>
+    <div class="ipad"><div class="screen">
+      <div class="statusbar"><span>9:41</span><span></span><span>100 %</span></div>
+      <div class="navbar">
+        <span class="nav-l link">‹ Zurück zum Entwurf</span>
+        <span class="title">PDF-Vorschau · D-EFGH</span>
+        <span class="nav-r"><span class="btn primary">Exportieren ⤴</span></span>
+      </div>
+      <div style="padding:14px 22px;"><div class="banner warn">⚠ Entwurf unvollständig — das PDF wird als ENTWURF gekennzeichnet.</div></div>
+      <div style="display:flex;justify-content:center;padding:6px 0 26px;">
+        <div class="pdfpage">
+          <h4>Prüfbericht — Platzhalter-Prüfformular</h4>
+          <div class="sub">D-EFGH · Wartung 200 h · 17.08.2026 · Seite 1/3</div>
+          <div class="pdfrow"><span>Luftfahrzeug-Kennzeichen</span><b>D-EFGH</b></div>
+          <div class="pdfrow"><span>Prüfer (Name)</span><b style="color:#C0392B;">— fehlt —</b></div>
+          <div class="pdfrow"><span>Datum der Prüfung</span><b>17.08.2026</b></div>
+          <div class="pdfrow"><span>Beplankung ohne Beschädigung</span><b>OK</b></div>
+          <div class="pdfrow"><span>Antennen fest</span><b style="color:#C0392B;">Mangel</b></div>
+          <div class="pdfimgs"><span class="pdfimg"></span><span class="pdfimg"></span></div>
+          <div class="watermark"><span>ENTWURF — UNVOLLSTÄNDIG</span></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ================= S-07 ================= -->
+  <section>
+    <h2>S-07 · Abschluss &amp; Wiedereröffnen</h2>
+    <div class="screen-meta"><span class="req">REQ-015</span><span class="req">REQ-032</span></div>
+    <p class="rationale">Abschließen ist eine bewusste, bestätigte Aktion und nur bei vollständiger
+    Validierung möglich. Danach zeigt der Editor einen Schreibschutz-Banner; alle Felder sind
+    read-only. Wiedereröffnen verlangt eine erneute Bestätigung und wird mit Zeitpunkt vermerkt.</p>
+    <div class="ipad"><div class="screen">
+      <div class="statusbar"><span>9:41</span><span></span><span>100 %</span></div>
+      <div class="navbar">
+        <span class="nav-l link">‹ Entwürfe</span>
+        <span class="title">D-KLMN · Jahresnachprüfung</span>
+        <span class="nav-r"><span class="pill done">Abgeschlossen</span></span>
+      </div>
+      <div style="padding:14px 22px;display:flex;flex-direction:column;gap:12px;">
+        <div class="banner lock">🔒 Abgeschlossen am 12.08.2026, 14:02 — schreibgeschützt. PDF kann jederzeit erneut erzeugt werden.</div>
+        <div class="field"><div class="lab">Luftfahrzeug-Kennzeichen ★</div><div class="val">D-KLMN</div></div>
+        <div class="field"><div class="lab">Prüfer (Name) ★</div><div class="val">L. Czenkusch</div></div>
+        <div style="display:flex;gap:10px;">
+          <span class="btn plain">PDF-Vorschau</span>
+          <span class="btn plain" style="margin-left:auto;">Wiedereröffnen…</span>
+        </div>
+        <div class="cnt-note">Wiedereröffnen wird im Entwurf vermerkt und im PDF ausgewiesen.</div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ================= S-08 ================= -->
+  <section>
+    <h2>S-08 · Formular-Import</h2>
+    <div class="screen-meta"><span class="req">REQ-004</span><span class="req">REQ-006</span></div>
+    <p class="rationale">Import einer Formulardefinition (JSON) über die Dateien-App. Vor der
+    Übernahme prüft die App die Definition und zeigt eine Zusammenfassung; fehlerhafte Dateien
+    werden mit konkreter Fehlermeldung abgewiesen und ändern nichts am Bestand.</p>
+    <div class="ipad"><div class="screen"><div class="sheet-back" style="padding:46px 150px;"><div class="sheet">
+      <div class="navbar">
+        <span class="nav-l link">Abbrechen</span>
+        <span class="title">Formular importieren</span>
+        <span class="nav-r"><span class="btn primary">Importieren</span></span>
+      </div>
+      <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
+        <div class="field"><div class="lab">Datei</div><div class="val">sichtpruefung-zelle-v2.json · 18 KB</div></div>
+        <div class="banner lock">✓ Definition gültig — „Sichtprüfung Zelle" v2, 4 Seiten, 23 Felder, 6 Pflichtfelder</div>
+        <div class="banner err">✕ Beispiel Fehlerfall: „Feld 12 hat unbekannten Typ ‚dropdown‘ — Import abgebrochen, Bestand unverändert."</div>
+      </div>
+    </div></div></div></div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- ================= Variante ================= -->
+  <section>
+    <h2>Variante zur Entscheidung: Seiten-Navigation im Editor</h2>
+    <p class="rationale">Die Mockups oben zeigen <b>Variante A</b> (Seitenleiste links — viel
+    Übersicht, ideal im Querformat). <b>Variante B</b> ersetzt die Leiste durch Seiten-Tabs oben —
+    mehr Platz fürs Formular, besser im Hochformat, dafür weniger Validierungs-Überblick.</p>
+    <div class="variant-grid">
+      <div>
+        <h3>A · Seitenleiste (empfohlen)</h3>
+        <div class="ipad" style="padding:10px;"><div class="screen"><div class="split" style="min-height:210px;">
+          <div class="sidebar" style="padding:8px;">
+            <div class="sb-row active" style="padding:7px 10px;font-size:12.5px;"><span>1 · Allgemein</span><span class="cnt">⚠</span></div>
+            <div class="sb-row" style="padding:7px 10px;font-size:12.5px;"><span>2 · Sichtprüfung</span><span class="cnt">✓</span></div>
+            <div class="sb-row" style="padding:7px 10px;font-size:12.5px;"><span>3 · Befunde</span><span class="cnt">⚠</span></div>
+          </div>
+          <div class="content" style="padding:10px;"><div class="fieldlist">
+            <div class="field" style="padding:8px 12px;"><div class="lab">Feld</div><div class="val">…</div></div>
+            <div class="field" style="padding:8px 12px;"><div class="lab">Feld</div><div class="val">…</div></div>
+          </div></div>
+        </div></div></div>
+      </div>
+      <div>
+        <h3>B · Seiten-Tabs oben</h3>
+        <div class="ipad" style="padding:10px;"><div class="screen" style="min-height:230px;">
+          <div style="display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--app-line);background:#fff;">
+            <span class="btn primary" style="padding:5px 12px;font-size:12.5px;">1 Allgemein ⚠</span>
+            <span class="btn plain" style="padding:5px 12px;font-size:12.5px;">2 Sichtprüfung ✓</span>
+            <span class="btn plain" style="padding:5px 12px;font-size:12.5px;">3 Befunde ⚠</span>
+          </div>
+          <div style="padding:10px;"><div class="fieldlist">
+            <div class="field" style="padding:8px 12px;"><div class="lab">Feld</div><div class="val">…</div></div>
+            <div class="field" style="padding:8px 12px;"><div class="lab">Feld</div><div class="val">…</div></div>
+          </div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Barrierefreiheit &amp; Bedienlogik</h2>
+    <ul class="notes">
+      <li>Status nie nur über Farbe: Pflichtfelder tragen ★ und Textmeldungen, Seiten zeigen ⚠/✓, Badges tragen Wortlaut.</li>
+      <li>Touch-Ziele durchgehend ≥ 44 pt; Checklisten-Segmente großflächig; Nutzung im Stehen mitgedacht (REQ-061).</li>
+      <li>Dynamic Type wird unterstützt; Layouts sind listenbasiert und reflow-fähig für Hoch- und Querformat (REQ-060).</li>
+      <li>Alle Kernfunktionen ohne Pencil bedienbar; Pencil verbessert nur Annotation und Unterschrift.</li>
+      <li>VoiceOver: Felder als beschriftete Formularelemente, Validierungsfehler als zugeordnete Hinweise.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="qbox"><b>Passt dieses Design so?</b> Konkret zu entscheiden:
+      ① Variante A oder B für die Editor-Navigation, ② Gesamteindruck der Screens S-01 bis S-08
+      (Änderungswünsche gern je Screen-ID). Nach deiner Freigabe wird das Design in
+      <code>.blueprint/design/ui-design.md</code> als abgenommen markiert und Phase 3 (Architektur) beginnt.</div>
+  </section>
+</div>
