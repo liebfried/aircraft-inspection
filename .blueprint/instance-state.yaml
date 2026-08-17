@@ -1,0 +1,279 @@
+state_version: '1'
+artifact_id: INSTANCE-STATE-AIRCRAFT-INSPECTION
+artifact_type: project_instance_state
+artifact_class: project_overlay
+distribution:
+  distribution_id: DIST-001
+  distribution_version: 1.0.0
+adapter:
+  adapter_id: ADAPTER-001
+  adapter_version: 2.0.0
+  tool_mapping_id: ADAPTER-TOOL-MAP-001
+  tool_mapping_version: 1.0.0
+digests:
+  project_request_digest: sha256:d8b851808dc9af09590172f2ec21a61a5b9924514735927c3f916d413f9f8241
+  resolution_digest: sha256:cd647ac5cb261050182b25944ff256a0f64b4cccd095b8bedee89c0fc479febf
+  projection_digest: sha256:a5dd7f905fff53fda22eaa82873f0b18115687fa65eaf5d91e0e83b785871576
+  materialization_plan_digest: sha256:c25785a99677f0e8ed47f4ca569ce9dcdb757c3ecedbbc1954e1d316c099faad
+request_snapshot:
+  project_artifact_id: PROJECT-AIRCRAFT-INSPECTION
+  activation_artifact_id: ACTIVATION-AIRCRAFT-INSPECTION
+  project_id: PROJECT-AIRCRAFT-INSPECTION
+  project_name: Aircraft Inspection
+  title: Aircraft Inspection
+  artifact_version: 1.0.0
+  last_reviewed: '2026-08-17'
+  owners:
+  - levin@czenkusch.com
+  human_gate_owners:
+  - levin@czenkusch.com
+  distribution_id: DIST-001
+  distribution_version: 1.0.0
+  project_types:
+  - native-ipad-application
+  project_features:
+  - FEAT-003
+  legal_scopes:
+  - EU
+  risk_profile: standard
+  technologies:
+  - swift
+  - swiftui
+  - xcode
+  deployment_model: unknown
+  data_classification:
+  - internal
+  requested_modules:
+  - - MOD-001
+    - Requirements discovery for the mandatory delivery workflow.
+  - - MOD-002
+    - Architecture decisions before implementation.
+  - - MOD-003
+    - Security baseline for produced code.
+  - - MOD-007
+    - UI design and mockup phase.
+  - - MOD-011
+    - Test design for implemented increments.
+  - - MOD-012
+    - Independent code review.
+  - - MOD-015
+    - Technical documentation.
+  activated_profiles: []
+  activated_roles:
+  - ROLE-001
+  - ROLE-003
+  - ROLE-005
+  - ROLE-010
+  - ROLE-021
+  - ROLE-022
+  - ROLE-020
+  - ROLE-024
+  - ROLE-007
+  gap_ids: []
+projection_request_snapshot:
+  adapter_id: ADAPTER-001
+  adapter_version: 2.0.0
+  target_surface: CLAUDE_CODE_SUBAGENT
+  role_bindings:
+  - role_id: ROLE-001
+    agent_id: AGT-001
+    binding_source: EXPLICIT_PROJECT_CONFIG
+  - role_id: ROLE-003
+    agent_id: AGT-002
+    binding_source: EXPLICIT_PROJECT_CONFIG
+  - role_id: ROLE-005
+    agent_id: AGT-003
+    binding_source: EXPLICIT_PROJECT_CONFIG
+  - role_id: ROLE-010
+    agent_id: AGT-004
+    binding_source: EXPLICIT_PROJECT_CONFIG
+  - role_id: ROLE-021
+    agent_id: AGT-005
+    binding_source: EXPLICIT_PROJECT_CONFIG
+  - role_id: ROLE-022
+    agent_id: AGT-006
+    binding_source: EXPLICIT_PROJECT_CONFIG
+  - role_id: ROLE-020
+    agent_id: AGT-007
+    binding_source: EXPLICIT_PROJECT_CONFIG
+  - role_id: ROLE-024
+    agent_id: AGT-008
+    binding_source: EXPLICIT_PROJECT_CONFIG
+  - role_id: ROLE-007
+    agent_id: AGT-011
+    binding_source: EXPLICIT_PROJECT_CONFIG
+  identities:
+  - platform_identity_id: PID-ADAPTER-001-AGT-001
+    platform_adapter_id: ADAPTER-001
+    identity_type: AGENT_SURFACE
+    blueprint_agent_id: AGT-001
+    blueprint_role_ids:
+    - ROLE-001
+    platform_reference: claude-code-agent/AGT-001
+    verification_status: DECLARED
+  - platform_identity_id: PID-ADAPTER-001-AGT-002
+    platform_adapter_id: ADAPTER-001
+    identity_type: AGENT_SURFACE
+    blueprint_agent_id: AGT-002
+    blueprint_role_ids:
+    - ROLE-003
+    platform_reference: claude-code-agent/AGT-002
+    verification_status: DECLARED
+  - platform_identity_id: PID-ADAPTER-001-AGT-003
+    platform_adapter_id: ADAPTER-001
+    identity_type: AGENT_SURFACE
+    blueprint_agent_id: AGT-003
+    blueprint_role_ids:
+    - ROLE-005
+    platform_reference: claude-code-agent/AGT-003
+    verification_status: DECLARED
+  - platform_identity_id: PID-ADAPTER-001-AGT-004
+    platform_adapter_id: ADAPTER-001
+    identity_type: AGENT_SURFACE
+    blueprint_agent_id: AGT-004
+    blueprint_role_ids:
+    - ROLE-010
+    platform_reference: claude-code-agent/AGT-004
+    verification_status: DECLARED
+  - platform_identity_id: PID-ADAPTER-001-AGT-005
+    platform_adapter_id: ADAPTER-001
+    identity_type: AGENT_SURFACE
+    blueprint_agent_id: AGT-005
+    blueprint_role_ids:
+    - ROLE-021
+    platform_reference: claude-code-agent/AGT-005
+    verification_status: DECLARED
+  - platform_identity_id: PID-ADAPTER-001-AGT-006
+    platform_adapter_id: ADAPTER-001
+    identity_type: AGENT_SURFACE
+    blueprint_agent_id: AGT-006
+    blueprint_role_ids:
+    - ROLE-022
+    platform_reference: claude-code-agent/AGT-006
+    verification_status: DECLARED
+  - platform_identity_id: PID-ADAPTER-001-AGT-007
+    platform_adapter_id: ADAPTER-001
+    identity_type: AGENT_SURFACE
+    blueprint_agent_id: AGT-007
+    blueprint_role_ids:
+    - ROLE-020
+    platform_reference: claude-code-agent/AGT-007
+    verification_status: DECLARED
+  - platform_identity_id: PID-ADAPTER-001-AGT-008
+    platform_adapter_id: ADAPTER-001
+    identity_type: AGENT_SURFACE
+    blueprint_agent_id: AGT-008
+    blueprint_role_ids:
+    - ROLE-024
+    platform_reference: claude-code-agent/AGT-008
+    verification_status: DECLARED
+  - platform_identity_id: PID-ADAPTER-001-AGT-011
+    platform_adapter_id: ADAPTER-001
+    identity_type: AGENT_SURFACE
+    blueprint_agent_id: AGT-011
+    blueprint_role_ids:
+    - ROLE-007
+    platform_reference: claude-code-agent/AGT-011
+    verification_status: DECLARED
+  activated_skill_ids:
+  - SKL-001
+  - SKL-002
+  - SKL-003
+  - SKL-004
+  - SKL-005
+  - SKL-006
+  - SKL-007
+  - SKL-008
+  - SKL-010
+  - SKL-011
+  skill_preapproval_tool_ids: []
+  strict_scope_enforcement: false
+managed_artifacts:
+- relative_path: .blueprint/project.yaml
+  ownership: PROJECT_OVERLAY
+  update_mode: IMMUTABLE
+  digest: sha256:0e126ceb24d6aee6eb5da211b7029be90290077b3865615194370aa66f109f47
+- relative_path: .blueprint/activation.yaml
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:aa52913674787d582e3177d743041d8851d4b6df48d78bc7e23ceadf6fddb7b0
+- relative_path: .claude/agents/architecture-reviewer.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:2a92a83fea3044d06d493c06d932297e6ba47ca03704429a167cb60d55561b09
+- relative_path: .claude/agents/code-author.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:154522e921c2f9d34629e41bc4bb9e9667d109e369738142c5fb7367d308b949
+- relative_path: .claude/agents/code-reviewer.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:96615b06c75202cb16f5e067c71839612d18b66e91db4643e996935034d62708
+- relative_path: .claude/agents/delivery-coordinator.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:4b966ca66918be1688f017de279e3863c7575d5cca6b40bfe6025ee479e94443
+- relative_path: .claude/agents/requirements-analyst.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:ab9a3f3938ccdacffcc45a8d747e821259064e0b376e5c5ec8a087f1d205a5e8
+- relative_path: .claude/agents/security-analyst.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:0424668676cf047a7323f471923adeb90a5029c09b6c8dcb7f4b29d8d9a46aaf
+- relative_path: .claude/agents/technical-documentation-author.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:9fc890e1c71f6f5f73abf534d7ba2a5255ae034e8d84e65d29fb02ff6a1a4f6b
+- relative_path: .claude/agents/test-designer.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:852333759fb7adbc51a44a9cf3de1f015079683217985dee1480c2eea25133ad
+- relative_path: .claude/agents/ui-ux-designer.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:e29f932ed2b1870512d532477f92c89e0afcbf697a6b5bf3aa78a6156902f39a
+- relative_path: .claude/skills/architecture-assessment/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:1e9ad54619aa22c403dda337bcc2906618a6ab7e6ceb81a4a4a77b346a93b823
+- relative_path: .claude/skills/artifact-validation/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:f088bf31e03e1ff7cc795070164fb26867ef0756acd45f3cccb1cdc58d7de928
+- relative_path: .claude/skills/code-authoring/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:9feec7a43aa46eab9a7879a3521de20c3c3db4cb2326e9049bbe2acfda06e567
+- relative_path: .claude/skills/code-review/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:924dd3c7db5202238d735a22cd341ffc9b686d3016aa3c8363e6fe8a148a6c9c
+- relative_path: .claude/skills/requirements-analysis/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:47fdb312b0537b99518788caab3b0dda1551c143253f08e56dca5891f9490d46
+- relative_path: .claude/skills/security-analysis/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:0ec742d60be9ca7c36600532d910675e9bcb9e4832d32ca988722f4cc5745e91
+- relative_path: .claude/skills/task-coordination/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:de388d1f5964cd62cdea3afdbaefe9301a381d67cf55e0a14d917eaf7c977491
+- relative_path: .claude/skills/technical-documentation/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:596b29d02ffcfb9d8de898e64592e077b84f01e597e041096ad33b1264f7c5a0
+- relative_path: .claude/skills/test-design/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:a0581f394b9da260d065e12e2134845805269cf8dc905931d46bd0c5b31b055e
+- relative_path: .claude/skills/ui-design-and-mockups/SKILL.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:fd664d6d1e0dcc6c688412bbaf0a70253cc7aed6dbb248b99079b67f81e8eb52
+- relative_path: CLAUDE.md
+  ownership: GENERATED
+  update_mode: REPLACEABLE
+  digest: sha256:f54c38ab31d9b0f88ed003a5a822a94fd70c328b05ec2c739fdab3bd6d6213d7

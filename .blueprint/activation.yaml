@@ -1,0 +1,55 @@
+schema_version: '1.0'
+artifact_id: ACTIVATION-AIRCRAFT-INSPECTION
+artifact_type: activation
+artifact_class: project_overlay
+artifact_version: 1.0.0
+status: draft
+title: Activation Declaration - Aircraft Inspection
+last_reviewed: '2026-08-17'
+owners:
+- levin@czenkusch.com
+source_package: BP-10
+blueprint_distribution:
+  distribution_id: DIST-001
+  artifact_version: 1.0.0
+activated_modules:
+- module_id: MOD-001
+  rationale: Requirements discovery for the mandatory delivery workflow.
+- module_id: MOD-002
+  rationale: Architecture decisions before implementation.
+- module_id: MOD-003
+  rationale: Security baseline for produced code.
+- module_id: MOD-007
+  rationale: UI design and mockup phase.
+- module_id: MOD-011
+  rationale: Test design for implemented increments.
+- module_id: MOD-012
+  rationale: Independent code review.
+- module_id: MOD-015
+  rationale: Technical documentation.
+deactivated_optional_modules: []
+activated_profiles:
+- PROF-001
+- PROF-002
+- PROF-003
+- PROF-004
+- PROF-008
+- PROF-018
+- PROF-019
+- PROF-022
+activated_roles:
+- ROLE-001
+- ROLE-003
+- ROLE-005
+- ROLE-007
+- ROLE-010
+- ROLE-020
+- ROLE-021
+- ROLE-022
+- ROLE-024
+activated_project_features:
+- FEAT-003
+explicit_activations: []
+known_conflicts: []
+blocking_gaps: []
+resolution_status: complete

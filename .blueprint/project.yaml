@@ -1,0 +1,32 @@
+schema_version: '1.0'
+artifact_id: PROJECT-AIRCRAFT-INSPECTION
+artifact_type: project
+artifact_class: project_overlay
+artifact_version: 1.0.0
+status: draft
+title: Aircraft Inspection
+last_reviewed: '2026-08-17'
+owners:
+- levin@czenkusch.com
+source_package: BP-10
+project_id: PROJECT-AIRCRAFT-INSPECTION
+project_name: Aircraft Inspection
+blueprint_distribution:
+  distribution_id: DIST-001
+  artifact_version: 1.0.0
+project_types:
+- native-ipad-application
+project_features:
+- FEAT-003
+legal_scopes:
+- EU
+risk_profile: standard
+technologies:
+- swift
+- swiftui
+- xcode
+deployment_model: unknown
+data_classification:
+- internal
+human_gate_owners:
+- levin@czenkusch.com
